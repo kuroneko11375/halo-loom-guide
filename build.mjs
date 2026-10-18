@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {guides} from './content.mjs';
 const root=dirname(fileURLToPath(import.meta.url));
 const booth='https://kuronekodev.booth.pm/items/8914197';
+const stylesheet='site.css?v=0.5.1-dev-20261018';
 const ids=['start','workspace','custom','motion','interaction','editions','faq'];
 const languages=[['ja','JP','index.html'],['en','EN','en.html'],['zh-Hant','ZH','zh.html']];
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -12,7 +13,7 @@ for(const [lang,label,file] of languages){
  const title=(i)=>`<h2><span>0${i+1}</span>${c.nav[i]}</h2>`;
  const devGallery=items=>`<div class="release-gallery">${items.map(([name,img,alt])=>`<figure><a href="assets/${img}"><img loading="lazy" src="assets/${img}" alt="${escape(alt)}" width="1200" height="1200"></a><figcaption>${escape(name)}</figcaption></figure>`).join('')}</div><p class="muted">${c.devCaptureNote}</p>`;
  const html=`<!doctype html>
-<html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Halo Loom — ${c.manual}</title><meta name="description" content="${escape(c.intro)}"><meta name="theme-color" content="#6056a1"><link rel="stylesheet" href="site.css"><link rel="icon" href="favicon.svg" type="image/svg+xml">${languages.map(([l,,f])=>`<link rel="alternate" hreflang="${l}" href="${f}">`).join('')}</head>
+<html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Halo Loom — ${c.manual}</title><meta name="description" content="${escape(c.intro)}"><meta name="theme-color" content="#6056a1"><link rel="stylesheet" href="${stylesheet}"><link rel="icon" href="favicon.svg" type="image/svg+xml">${languages.map(([l,,f])=>`<link rel="alternate" hreflang="${l}" href="${f}">`).join('')}</head>
 <body id="top"><a class="skip" href="#main">${c.skip}</a><header><div class="top"><a class="brand" href="${file}"><small>黒猫Dev</small>Halo Loom</a><nav class="languages" aria-label="Language">${languages.map(([l,n,f])=>`<a href="${f}" lang="${l}"${l===lang?' aria-current="page"':''}>${n}</a>`).join('')}</nav></div></header>
 <div class="hero"><div class="hero-copy"><div class="eyebrow">HALO LOOM / USER GUIDE</div><h1>${c.headline}</h1><p>${c.intro}</p><div class="buttons"><a class="button" href="#start">${c.begin}</a><a class="button secondary" href="${booth}">${c.booth} ↗</a></div><p class="muted">${c.version}</p></div><img src="assets/05-crystals.png" alt="${c.heroAlt}" width="1024" height="1024"></div>
 <div class="shell"><aside><nav aria-label="${c.contents}"><p>${c.contents}</p>${ids.map((id,i)=>`<a href="#${id}">0${i+1} &nbsp; ${c.nav[i]}</a>`).join('')}</nav></aside><main id="main">
