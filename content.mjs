@@ -1,806 +1,558 @@
-export const guides = {
-  "ja": {
-    "manual": "使い方ガイド",
-    "headline": "光と動きを、<br>あなたらしく。",
-    "intro": "Halo Loom は、光の粒や装飾を組み合わせてハローを作る Unity Editor ツールです。まずはひとつ作って、色・素材・動きを変えてみましょう。",
-    "begin": "はじめての設定",
-    "booth": "BOOTH 商品ページ",
-    "version": "製品版 0.5.1 · 無料版は別エディション",
-    "releaseTitle": "0.5.1 — チャージから発射まで、もっと華やかに",
-    "releaseItems": [
-      "装飾素材のチャージに、内側へ集まる光と、チャージ完了を知らせる穏やかな脈動を追加しました。",
-      "散射は扇状に、光束は細く集中し、連射は段階的に発射。それぞれの軌跡に合わせた彩色の噴流と、外へ広がる粒子が続きます。",
-      "ハート型リングの拡散と余韻には、色とりどりのハートがきらめきます。",
-      "装飾は光だけでなく、選んだモデル本体も飛んで戻ります。内蔵 20 種類を対象に確認しています。"
-    ],
-    "releaseNote": "掲載例は Unity Editor で描画しています。VRChat Client・ヘッドセット・複数人での表示・GPU 負荷は、この更新では再検証していません。実際に使用するアバターと環境で確認してください。",
-    "devGalleryTitle": "0.5.1 の光ときらめき",
-    "devCaptureNote": "2026-10-18 の Unity Editor 実描画による作例です。画像内の説明は日本語です。画像をクリックして拡大できます。",
-    "devEffects": [
-      [
-        "光ときらめきの作例",
-        "dev-051-light-and-sparkle-JP.jpg",
-        "円環・ハート・星空と装飾の光を並べた 0.5.1 の Unity 作例"
-      ],
-      [
-        "多色のハート、きらめく余韻",
-        "dev-051-colorful-hearts-JP.jpg",
-        "ハート型リングから多色のハートが広がる、発射と余韻の Unity 作例"
-      ]
-    ],
-    "devInteraction": [
-      [
-        "集光から、チャージ完了、解放へ",
-        "dev-051-charge-and-release-JP.jpg",
-        "装飾の集光チャージ、完了時の脈動、粒子が広がる解放の 3 段階"
-      ],
-      [
-        "拡散・ビーム・連射",
-        "dev-051-three-release-styles-JP.jpg",
-        "彩色粒子と装飾モデルによる拡散・ビーム・連射の 3 種類の射出"
-      ]
-    ],
-    "skip": "本文へ移動",
-    "contents": "このガイドの内容",
-    "nav": [
-      "はじめての設定",
-      "4 つのワークスペース",
-      "自作素材と取り付け位置",
-      "見た目と動き",
-      "持つ・チャージ・発射・戻す",
-      "無料版と製品版",
-      "困ったときは"
-    ],
-    "before": "作業前にプロジェクトをバックアップしてください。0.5.1 の開発・確認環境は Unity 2022.3.22f1 / PC / Built-in、VRChat Avatars SDK 3.10.5、Modular Avatar 1.18.7、NDMF 1.14.8 です。SDK・MA・NDMF は別途導入が必要です。最低対応版の保証や Quest / モバイル / URP 対応を示すものではありません。",
-    "importNote": "製品版は Editor・Shaders・Audio を含むパッケージ全体をインポートしてください。SDK / MA / NDMF 不足時は VRChat バックエンドがコンパイル対象外となり、作成・適用は使えません。SDK なしのコンパイル確認は完全な機能対応を意味しません。Shader を Editor 内へ移動しないでください。",
-    "steps": [
-      [
-        "インポートして開く",
-        "操作前にダウンロードした .unitypackage 全体をインポートします。コンパイル完了後、<code>黒猫Dev &gt; Halo Loom</code> を開きます。"
-      ],
-      [
-        "Avatar と取り付け先を指定",
-        "「基本」で Hierarchy の Avatar ルートを Avatar 欄へドラッグします。有効な Humanoid では Head が初期の取り付け先になります。自動設定されない場合は、取り付け先の Transform を直接指定してください。"
-      ],
-      [
-        "位置と大きさを調整",
-        "位置・回転・半径で調整します。「シーンビューで直接調整」も利用できます。まず小さめの半径から始め、頭や耳との重なりを確認しましょう。"
-      ],
-      [
-        "見た目を選ぶ",
-        "「外観」で基本エフェクト、装飾、または両方を選択。色・数・サイズを調整します。自作素材を使う場合は、下の「自作素材と取り付け位置」を参照してください。"
-      ],
-      [
-        "動きを選ぶ",
-        "「モーション」でカテゴリーとモーションを選び、ループ時間などを調整します。星空のみの場合は、星のまたたき・移動・軌跡を設定します。"
-      ],
-      [
-        "作成してプレビュー",
-        "「Halo を作成」を押し、「モーションをプレビュー」で確認します。既存の Halo を編集するときは、変更を適用してからプレビューしてください。"
-      ],
-      [
-        "保存して、実際の環境で確認",
-        "Unity のシーンを保存します。VRChat 用アバターは SDK の Build & Test でも確認してください。使用中の Halo が参照する Generated 資産は削除しないでください。"
-      ]
-    ],
-    "freeStart": "無料版の場合：開くメニューは 黒猫Dev > Halo Loom Free です。基本の流れは同じですが、使えるエフェクトやモーションが異なります。",
-    "workspaceIntro": "「どこに置くか」「どう見せるか」「どう動かすか」を分けて設定できます。",
-    "workspaces": [
-      [
-        "基本",
-        "Avatar、取り付け先、位置、回転、半径を設定。現在の Halo を表示するボタンは Hierarchy の対象を選択・強調し、Scene ビューのズームは変えません。",
-        "01-basic-JP.png"
-      ],
-      [
-        "外観",
-        "基本エフェクト・装飾・混合を選び、色、素材、数、大きさ、透明感や軌跡を調整。使える項目は選択した見た目によって変わります。",
-        "02-appearance-JP.png"
-      ],
-      [
-        "モーション",
-        "動きの種類と再生時間を設定。モーションの説明を読んで選べます。数の調整は「外観」で行います。",
-        "03-motion-JP.png"
-      ],
-      [
-        "詳細設定",
-        "乱数シード、モーションの細部、演出時間、マテリアルやベイク品質など。最初は初期値のままで大丈夫です。",
-        "04-advanced-JP.png"
-      ]
-    ],
-    "screenshot": "Unity の実際の画面",
-    "enlarge": "画像をクリックして拡大",
-    "captureNote": "画像は旧 UI（2026-10-01）の操作例です。0.5.1 では表示や配置が異なる場合があります。Avatar は実際の対象を指定してください。",
-    "customIntro": "製品版では、星やクリスタルだけでなく、自分で作った小物も素材にできます。きれいな装飾にも、ちょっと楽しい組み合わせにも。",
-    "customSteps": [
-      "「外観」の表示モードを装飾、または基本エフェクトと装飾の混合にします。",
-      "素材の種類をカスタム素材にして、<strong>Project ウィンドウの Prefab</strong> を指定します。Hierarchy 上のオブジェクトは直接使用できません。Prefab の代わりに Mesh と Material を指定することもできます。",
-      "装飾数、配置方法、大きさを調整します。半径は軌道の大きさ、装飾のスケールは素材自体の大きさです。",
-      "向きを「パスに沿う」「外向き」「中心向き」などから選びます。モデルの正面が合わない場合は素材の回転補正を調整します。",
-      "「モーション」で動きを選び、作成または変更を適用します。元の Prefab・Mesh・Material は変更せず、生成した側を使用します。"
-    ],
-    "placementTitle": "頭以外にも取り付けられます",
-    "placement": "「基本」の取り付け先を手首・胸・背中などの Transform、または自分で用意したアンカーへ変更します。その部位に合わせて位置・回転・半径を調整してください。各部位に自動フィットする機能ではありません。",
-    "customWarning": "素材を増やすほど、ポリゴン・Renderer・ParticleSystem の負荷も増えます。まず少数から確認してください。コスト表示は目安で、動的な生成や透明の重なりをすべて測定するものではありません。第三者の素材・Runtime Component の VRChat 対応は保証しません。",
-    "clipTitle": "素材自身のアニメーションを使うには？",
-    "clip": "任意の Generic AnimationClip を「素材自身のアニメーション」に指定できます。素材をルートにした曲線が対象で、Halo の周回とは別に動かせます。Humanoid Clip、Animation Events、合わないバインディングには対応しません。Prefab に既存の Animator Controller / Animation がある場合は追加 Clip を指定せず元の構成を保つか、Controller のない素材を用意してください。第三者 Animator の Editor プレビューは保証対象外です。",
-    "effects": [
-      [
-        "光の軌跡",
-        "02-light-trails.png"
-      ],
-      [
-        "エネルギーライン",
-        "04-energy-lines.png"
-      ],
-      [
-        "バブル",
-        "03-bubbles.png"
-      ],
-      [
-        "星空リング",
-        "01-starfield.png"
-      ]
-    ],
-    "effectNote": "実際の Unity 表示による組み合わせ例です。各画像が独立した一括プリセットとして付属するわけではありません。エネルギーラインは線の太さ、バブルは透明感も調整できます。",
-    "motionTitle": "装飾と光点に、20 種類の動き",
-    "motion": "穏やかな浮遊、螺旋、跳躍、編隊、演出のカテゴリーから選べます。まずは穏やかな動きでサイズを合わせ、その後に環面螺旋やホップ、収束演出を試すのがおすすめです。衝突系は見た目の演出で、物理的な衝突判定ではありません。大きい素材は重なることがあります。",
-    "starTitle": "星空は、またたきと小さな移動で",
-    "star": "微小な四芒星が、中空の立体的なリングに分布します。外観で密度・星のサイズ・リングの厚みを、モーションでまたたき・短い閃光・移動・軌跡を調整します。星空そのものは独自の星アニメーションを使い、混合した装飾には通常のモーションを設定できます。",
-    "randomTitle": "ランダム A / B / C",
-    "random": "相性のよい候補を 3 種類以上選ぶと、異なる 3 つの動きを A → B → C の順に繋いで再生します。ループ時間は 3 段全体の長さです。組み合わせは保存され、毎周その場で抽選し直すものではありません。変更したいときは再抽選を使います。",
-    "preview": "プレビューは反映済みのアニメーションを再生します。設定を変えたら適用して確認しましょう。既存の Halo を編集する前に、上部の「編集中の Halo」が目的のオブジェクトか確認してください。別案を残すときは複製を作成します。",
-    "columns": [
-      "内容",
-      "無料版",
-      "製品版"
-    ],
-    "rows": [
-      [
-        "基本エフェクト",
-        "光点・中空の五芒星",
-        "光点・ライン・バブル・星空"
-      ],
-      [
-        "モーション",
-        "穏やかな浮遊 / 波乗り周回",
-        "20 種類 + ランダム A/B/C"
-      ],
-      [
-        "軌道",
-        "円形",
-        "円形 / ハート / 花形"
-      ],
-      [
-        "内蔵装飾・自作素材",
-        "なし",
-        "20 種類の装飾、Prefab / Mesh + Material"
-      ],
-      [
-        "取り付け位置・色・サイズ",
-        "調整可能",
-        "調整可能"
-      ],
-      [
-        "ゲーム内インタラクション",
-        "含まれません",
-        "本人の持ち替え・チャージ・射出・頭上収納／PC 操作。SDK + MA + NDMF が必要"
-      ],
-      [
-        "時間制限・透かし",
-        "なし",
-        "なし"
-      ]
-    ],
-    "editionNote": "無料版は製品版なしで使用できます。同じプロジェクトで共存できますが、両版は互いの生成物を編集しません。価格・配布条件は BOOTH 商品ページをご確認ください。",
-    "faq": [
-      [
-        "Shader が見つからない / ピンク色になる",
-        "パッケージに Editor と Shaders の両方が入っているか確認し、完全なパッケージを再インポートしてください。製品版の場所は Assets/黒猫Dev/HaloMaker、無料版は Assets/黒猫Dev/HaloLoomFree です。Shader は Editor の外に置きます。改善しない場合は Console の Shader エラーと使用環境を添えてご連絡ください。"
-      ],
-      [
-        "既存の Halo が見つからない",
-        "Hierarchy で目的の Halo 本体を選択し、ウィンドウ上部の編集対象を確認してください。複数ある場合は個別に選びます。見つからないまま新規作成すると重複するため、先に選択と Avatar の指定を確認しましょう。旧形式が読み取り専用の場合、既存物は残したまま新しい Halo を設定します。"
-      ],
-      [
-        "変更したのにプレビューが変わらない",
-        "変更を適用してからプレビューしてください。即時反映をオフにしている場合、欄を変えるだけでは生成物は更新されません。編集中の対象も確認してください。"
-      ],
-      [
-        "手の操作が反応しない",
-        "ジェスチャーを解除し、本人の手で光環へ触れた後に握ってください。親指を立てるとチャージ、満充電後に元位置から離れて握ると発射します。元位置で開いて握ると戻ります。変更後は適用・保存し Build & Test で確認してください。通常のアニメーションプレビューは Client の手操作を再現しません。"
-      ],
-      [
-        "重い / 素材が重なりすぎる",
-        "まず装飾数・星の密度を下げ、軽い素材で確認します。自作 Prefab 内のパーティクルや複数の Renderer、透明の重なりにも注意してください。負荷警告は FPS の保証や完全な性能診断ではありません。"
-      ],
-      [
-        "更新・削除するときに気をつけることは？",
-        "旧版からの標準更新手順は、バックアップ後に旧 Halo と旧ツール本体を取り外し、新版をインポートして作り直す流れです。<a href=\"#reinstall\">削除・再インストールの手順</a>をご確認ください。"
-      ],
-      [
-        "どの環境でも同じ見た目になりますか？",
-        "画像は Unity Editor / Built-in / DX11 での表示です。ワールドの明るさ、カメラ、透明の重なりなどで見え方は変わります。Quest・モバイル・URP などすべての環境への対応を意味しません。対象アバターと実際の利用環境で確認してください。"
-      ]
-    ],
-    "support": "解決しない場合は、使用版・Unity のバージョン・再現手順・Console のエラーを添えて、商品ページからお問い合わせください。",
-    "top": "ページの先頭へ",
-    "updated": "更新 2026-10-18 · 製品版 0.5.1",
-    "rights": "画像は使用例です。アバター・撮影用シーン・第三者の有料参考素材は付属しません。",
-    "heroAlt": "Unity で描画した、青白いクリスタルが周回する Halo",
-    "interactionTitle": "持つ・チャージ・発射・戻す",
-    "interactionSteps": [
-      "光環へ先に触れ、その手で握ると持ちます。手を開いても同じ手に残ります。本人の接触と手のジェスチャーを使います。",
-      "持っている手で親指を立ててチャージ（初期値3秒、2～4秒）。途中で形を変えると中止。満充電の光と音の合図後は開いてもエネルギーを保持します。",
-      "頭の元位置から離れて握ると発射。方向は拳の指関節の前方、手首に追従します。設定で拡散／ビーム／連射を選択できます。演出後も持ち続けます。",
-      "戻すには同じ手を頭の元位置に戻し、開いてからもう一度握ります。満充電でも収納が優先され、メニューは不要。握ったまま近づけるだけでは戻りません。独自 home はその元位置を使います。",
-      "持ち替えは元の手を開き、もう一方で触れて握ります。チャージはやり直します。戻した後も開いてから握ると再び取れます。手のジェスチャーが固定されている場合は解除してください。",
-      "PC：Halo Loom → PC → 展開 → チャージON → 満充電後に同じトグルOFFで発射。途中のOFFは中止。中止して戻す／リセットも利用できます。"
-    ],
-    "update": "旧版からの標準更新手順は、バックアップ後に旧 Halo と旧ツール本体を取り外し、新版をインポートして作り直す流れです。<a href=\"#reinstall\">削除・再インストールの手順</a>をご確認ください。",
-    "grabFaq": "ジェスチャーを解除し、本人の手で光環へ触れた後に握ってください。親指を立てるとチャージ、満充電後に元位置から離れて握ると発射します。元位置で開いて握ると戻ります。変更後は適用・保存し Build & Test で確認してください。通常のアニメーションプレビューは Client の手操作を再現しません。",
-    "row": [
-      "ゲーム内インタラクション",
-      "含まれません",
-      "本人の持ち替え・チャージ・射出・頭上収納／PC 操作。SDK + MA + NDMF が必要"
-    ],
-    "imageClose": "画像を閉じる",
-    "imageLabel": "画像を拡大",
-    "reinstall": {
-      "title": "【重要】旧版からの更新は、削除・再インストール",
-      "link": "更新手順を確認",
-      "nav": "重要：更新・再インストール",
-      "flow": "プロジェクトをバックアップ → 旧版ツールで現在の Halo を削除 → 旧 HaloMaker のツール本体のみ削除 → 新版をインポート → Halo を作り直す",
-      "steps": [
-        "プロジェクトをバックアップ",
-        "旧版ツールで現在の Halo を削除",
-        "旧 HaloMaker のツール本体のみ削除",
-        "新版をインポート",
-        "Halo を作り直す"
-      ],
-      "body": [
-        "再作成に備えて、現在の設定を先に控えてください。旧版の「削除／復元」から更新対象の Halo だけを削除し、シーンを保存してから旧ツール本体を取り外します。Avatar、他の Halo、SDK／MA／NDMF、外部素材、手動で所有関係を確認できない Generated、`.HaloLoomArchive` は削除しないでください。HaloMaker フォルダー全体を一括削除する手順ではありません。",
-        "新版は `.unitypackage` 全体をインポートし、Halo を新規作成してシーンを保存してください。最後に対象 Avatar の Build & Test とゲーム内操作を確認します。"
-      ],
-      "extraTitle": "既存 Halo の読み込み・適用について",
-      "extra": "現行の0.5.0ワークスペースには、既存 Halo の読み込みと「変更を適用」で更新できる機能もあります。このページの標準更新手順では、削除してからの再インストールを案内しています。"
-    },
-    "creditsHtml": "<section id=\"credits\" lang=\"ja\">\r\n  <h2><span>08</span>出典・ライセンス</h2>\r\n  <p>外部素材の出典とライセンスは以下のとおりです。各素材のライセンスは、Halo Loom 本体やアバターなどの利用条件とは別に扱ってください。</p>\r\n  <h3>操作音の出典</h3>\r\n  <p>収録する7つの操作音は、以下の CC0 1.0 素材から切り出し、フィルター、音量調整、フェードと、一部の重ね合わせ・ピッチ調整を行ったものです。編集済みの操作音のみを収録し、元の音源パック全体は同梱していません。</p>\r\n  <ul>\r\n    <li><strong>Magical Mystery Spell Burst</strong> — 作者: CVLTIV8R; <a href=\"https://freesound.org/people/CVLTIV8R/sounds/814946/\" target=\"_blank\" rel=\"noopener noreferrer\">出典</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; 使用先: Charge.</li>\r\n    <li><strong>Magic Potion FX</strong> — 作者: CVLTIV8R; <a href=\"https://freesound.org/people/CVLTIV8R/sounds/813142/\" target=\"_blank\" rel=\"noopener noreferrer\">出典</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; 使用先: Take, Charge, Ready, Beam, Return.</li>\r\n    <li><strong>Atmospheric Interaction Sound Pack</strong> — 作者: legoluft (投稿者: qubodup); <a href=\"https://opengameart.org/node/3371\" target=\"_blank\" rel=\"noopener noreferrer\">出典</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; 使用先: Ready, Scatter, Beam, Volley. 使用した元ファイル: space/link.wav, space/anchor_action.wav, space/magnet_action.wav.</li>\r\n  </ul>\r\n  <h3>外部の視覚素材</h3>\r\n  <p><strong>Particle Pack (1.1)</strong> — Kenney Vleugels (Kenney.nl). <a href=\"https://kenney.nl/\" target=\"_blank\" rel=\"noopener noreferrer\">Kenney 公式サイト</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>.</p>\r\n  <p>Kenney Particle Pack (1.1) の CC0 パーティクルテクスチャを使用しています。</p>\r\n  \r\n  <p>フィルターテンプレートの追加クレジット: Indigo Ray, Craig Nisbet, Zoltan Erdokovy, Heliagon, ThreeDee, Killst4r, Tim2501.</p>\r\n  <h3>Halo Loom の制作素材</h3>\n  <p>Halo Loom 用の星芒の一部は AI 生成テクスチャです。ハートは手続き型の自作素材、その他の Mesh・Material・Animator・流体 Shader は Halo Loom の制作素材です。</p>\r\n  <p>上記の CC0 表示は、該当する外部素材の案内です。Halo Loom 全体を CC0 とする表示ではなく、第三者素材の新たな再ライセンスを行うものでもありません。</p>\r\n</section>\r\n",
-    "creditsTitle": "出典・ライセンス"
-  },
-  "en": {
-    "manual": "User Guide",
-    "headline": "Make light and motion<br>your own.",
-    "intro": "Halo Loom is a Unity Editor tool for creating halos from glowing effects and ornaments. Start with one halo, then make it yours with color, custom assets and motion.",
-    "begin": "Get started",
-    "booth": "View on BOOTH",
-    "version": "Pro 0.5.1 · Free is a separate edition",
-    "releaseTitle": "0.5.1 — a fuller charge and release",
-    "releaseItems": [
-      "Ornament charging draws light inward, followed by a gentle pulse that makes the ready state easier to recognize.",
-      "Scatter opens into a fan, Beam concentrates into narrow paths, and Volley fires in stages. Colorful jets and outward-spreading particles follow each release style.",
-      "The heart-shaped ring scatters colorful, twinkling hearts through its release and lingering particles.",
-      "The selected ornament models themselves fly out and return with the light. All 20 built-in ornaments are covered by the Unity checks."
-    ],
-    "releaseNote": "Examples are rendered in Unity Editor. VRChat Client, headset use, multiplayer visibility and GPU cost have not been revalidated for this update. Check the avatar and environment you intend to use.",
-    "devGalleryTitle": "Light and sparkle in 0.5.1",
-    "devCaptureNote": "Actual Unity Editor examples captured on 2026-10-18. Text within the images is Japanese. Click an image to enlarge it.",
-    "devEffects": [
-      [
-        "Light and sparkle examples",
-        "dev-051-light-and-sparkle-JP.jpg",
-        "Unity examples of circle, heart, starfield and ornament lighting in 0.5.1"
-      ],
-      [
-        "Colorful hearts and lingering sparkle",
-        "dev-051-colorful-hearts-JP.jpg",
-        "Unity examples of colorful hearts spreading from the heart-shaped ring during release and its lingering particles"
-      ]
-    ],
-    "devInteraction": [
-      [
-        "Gather light, get ready, release",
-        "dev-051-charge-and-release-JP.jpg",
-        "Three stages of ornament charging: gathering light, the ready pulse and release with spreading particles"
-      ],
-      [
-        "Scatter, Beam and Volley",
-        "dev-051-three-release-styles-JP.jpg",
-        "The Scatter, Beam and Volley release styles with colorful particles and ornament models"
-      ]
-    ],
-    "skip": "Skip to content",
-    "contents": "IN THIS GUIDE",
-    "nav": [
-      "Get started",
-      "Four workspaces",
-      "Custom assets & attachment",
-      "Effects & motion",
-      "Hold, charge, fire and return",
-      "Free vs Pro",
-      "Troubleshooting"
-    ],
-    "before": "Back up your project first. The development/check environment for Pro 0.5.1 is Unity 2022.3.22f1 / PC / Built-in, VRChat Avatars SDK 3.10.5, Modular Avatar 1.18.7 and NDMF 1.14.8. Install these dependencies separately. This does not establish minimum-version, Quest, mobile or URP compatibility.",
-    "importNote": "Import the whole Pro package, including Editor, Shaders and Audio. Without SDK / MA / NDMF, the VRChat backend is excluded from compilation and Create / Apply is unavailable. A no-SDK compile check does not establish full functionality. Keep shaders outside Editor.",
-    "steps": [
-      [
-        "Import and open",
-        "Import the downloaded .unitypackage in full. After compilation, open <code>黒猫Dev &gt; Halo Loom</code>."
-      ],
-      [
-        "Assign your Avatar and attachment",
-        "In Basic, drag the scene Avatar root from the Hierarchy into Avatar. A valid Humanoid initially uses Head. If Head cannot be resolved, assign the attachment Transform yourself."
-      ],
-      [
-        "Set position and size",
-        "Adjust Position, Rotation and Radius, or enable Adjust in Scene View. Start with a small radius and check for overlap with the head and ears."
-      ],
-      [
-        "Choose the appearance",
-        "In Appearance, choose base effects, ornaments, or a mix of both. Adjust color, count and size. For your own models, see Custom assets & attachment below."
-      ],
-      [
-        "Choose the motion",
-        "In Motion, select a category and preset, then adjust loop duration. A starfield-only halo instead uses twinkle, movement and trails."
-      ],
-      [
-        "Create and preview",
-        "Click Create Halo, then Preview Motion. When editing an existing halo, apply your changes before previewing."
-      ],
-      [
-        "Save and check in use",
-        "Save your Unity scene. For VRChat avatars, also check with the SDK’s Build & Test. Keep the Generated assets referenced by any halo still in use."
-      ]
-    ],
-    "freeStart": "Using Free? Open 黒猫Dev > Halo Loom Free instead. The basic workflow is similar, but the available effects and motions differ.",
-    "workspaceIntro": "Separate where the halo sits, what it looks like, and how it moves.",
-    "workspaces": [
-      [
-        "Basic",
-        "Set Avatar, attachment, position, rotation and radius. Locate Current Halo selects and highlights the object in the Hierarchy without changing the Scene view zoom.",
-        "01-basic-JP.png"
-      ],
-      [
-        "Appearance",
-        "Choose base effects, ornaments or both. Set materials, color, count, size, transparency and trails. Available controls depend on the current style.",
-        "02-appearance-JP.png"
-      ],
-      [
-        "Motion",
-        "Choose motion and loop duration. Read the description to see what a preset does. Adjust object count in Appearance.",
-        "03-motion-JP.png"
-      ],
-      [
-        "Advanced",
-        "Fine-tune seeds, motion details, phase timing, materials and bake quality. Defaults are a good starting point.",
-        "04-advanced-JP.png"
-      ]
-    ],
-    "screenshot": "Actual Unity interface",
-    "enlarge": "Click the image to enlarge",
-    "captureNote": "Screenshots show the earlier UI (2026-10-01). Layout and labels may differ in 0.5.1. Assign your actual Avatar when configuring it.",
-    "customIntro": "Pro supports your own small props as well as stars and crystals. Make something elegant, playful, or a little unexpected.",
-    "customSteps": [
-      "In Appearance, choose Ornaments or a mix of effects and ornaments.",
-      "Select Custom as the asset source and assign a <strong>Prefab from the Project window</strong>, not a scene instance from the Hierarchy. You can use Mesh + Material instead.",
-      "Set count, placement and scale. Radius changes the orbit; ornament scale changes the asset itself.",
-      "Choose Follow Path, Face Outward, Face Center or another orientation. Adjust the rotation offset when the model’s own forward axis does not match.",
-      "Choose motion, then create or apply. Generated instances are used; the original Prefab, Mesh and Material assets are not edited."
-    ],
-    "placementTitle": "Not just above the head",
-    "placement": "In Basic, change the attachment to a wrist, chest, back Transform or your own anchor. Adjust local position, rotation and radius to suit the location. This is manual placement, not automatic fitting to each body part.",
-    "customWarning": "More copies mean more polygons, renderers and potentially particles. Start with a low count. Cost estimates do not capture every runtime effect or transparent overlap. Halo Loom does not guarantee compatibility for third-party assets or runtime components.",
-    "clipTitle": "Can the asset play its own animation?",
-    "clip": "An optional Generic AnimationClip can animate the asset independently of the outer halo motion. Bindings must be relative to the asset root. Humanoid clips, Animation Events and mismatched bindings are not supported. If the Prefab already has an Animator Controller or legacy Animation, leave the extra clip empty to preserve that setup, or provide an asset without a controller. Editor preview of third-party Animator setups is not guaranteed.",
-    "effects": [
-      [
-        "Light trails",
-        "02-light-trails.png"
-      ],
-      [
-        "Energy lines",
-        "04-energy-lines.png"
-      ],
-      [
-        "Bubbles",
-        "03-bubbles.png"
-      ],
-      [
-        "Starfield ring",
-        "01-starfield.png"
-      ]
-    ],
-    "effectNote": "These are actual Unity examples, not additional bundled one-click presets. Energy lines have adjustable width; bubbles have a transparency control.",
-    "motionTitle": "20 motions for ornaments and light bodies",
-    "motion": "Choose from gentle, spiral, hopping, formation and performance categories. Fit your assets with a calm motion first, then try a toroidal helix, hops or a collapse sequence. Clash motions are visual choreography, not physics collisions. Large assets may overlap.",
-    "starTitle": "A starfield with twinkle and small movements",
-    "star": "Tiny four-point stars fill a hollow, three-dimensional ring. Appearance controls density, star size and ring thickness; Motion controls twinkle, flashes, movement and trails. The starfield has its own animation, while ornaments in a mixed style can use regular motion presets.",
-    "randomTitle": "Random A / B / C",
-    "random": "Select at least three compatible candidates to bake three different motions into an A → B → C loop. Loop duration covers all three sections. The selection is saved, not freshly randomized every cycle at runtime. Use the reshuffle control for a new combination.",
-    "preview": "Preview plays applied animation. Apply after changing settings. Before editing, check the current Halo name at the top of the window. Use Create Copy when you want to keep the existing version.",
-    "columns": [
-      "Feature",
-      "Free",
-      "Pro"
-    ],
-    "rows": [
-      [
-        "Base effects",
-        "Glow dots / hollow five-point stars",
-        "Particles / lines / bubbles / starfield"
-      ],
-      [
-        "Motion",
-        "Calm Float / Wave Rider",
-        "20 presets + Random A/B/C"
-      ],
-      [
-        "Paths",
-        "Circle",
-        "Circle / Heart / Flower"
-      ],
-      [
-        "Ornaments & custom assets",
-        "Not included",
-        "20 ornaments; Prefab / Mesh + Material"
-      ],
-      [
-        "Attachment, color & size",
-        "Adjustable",
-        "Adjustable"
-      ],
-      [
-        "In-game interaction",
-        "Not included",
-        "Owner hold/transfer/charge/fire/head return and PC controls; SDK + MA + NDMF required"
-      ],
-      [
-        "Time limit / watermark",
-        "None",
-        "None"
-      ]
-    ],
-    "editionNote": "Free works without Pro. Both can coexist in one project, but do not edit each other’s generated halos. Check BOOTH for pricing and distribution terms.",
-    "faq": [
-      [
-        "Shader missing, or everything is pink",
-        "Check that both Editor and Shaders were imported, then reimport the complete package. Pro lives in Assets/黒猫Dev/HaloMaker; Free in Assets/黒猫Dev/HaloLoomFree. Shaders must stay outside Editor. If it persists, include the shader error from Console and your environment when contacting support."
-      ],
-      [
-        "An existing halo is not detected",
-        "Select the actual Halo object in the Hierarchy and check the editing target at the top. Select halos individually when there is more than one. Avoid creating another halo until you have checked selection and Avatar assignment. A read-only legacy object can be kept while you configure a new halo."
-      ],
-      [
-        "Preview does not reflect my changes",
-        "Apply the changes first. If live apply is off, changing a field alone does not update the generated halo. Also check which halo is being edited."
-      ],
-      [
-        "Hand gestures do not respond",
-        "Unlock gestures, touch the halo with your own hand, then make a fist. Thumbs-up charges; a fist away from home fires when ready. Open and make a new fist at home to return. Apply and save changes, then check using Build & Test. Normal animation preview does not simulate Client hand input."
-      ],
-      [
-        "The effect is expensive or too crowded",
-        "Reduce ornament count or star density and test with a lightweight asset. Check particles, multiple renderers and transparent overlap in custom Prefabs. A cost warning is not a complete performance diagnosis or FPS guarantee."
-      ],
-      [
-        "What should I keep when updating or deleting?",
-        "The standard update procedure is to back up, remove the old Halo and old tool files, import the new version, and recreate the Halo. Read the <a href=\"#reinstall\">removal and reinstallation steps</a>."
-      ],
-      [
-        "Will it look the same everywhere?",
-        "Images were captured in Unity Editor / Built-in / DX11. World lighting, cameras and transparent overlap can change the result. This does not establish support for every platform, including Quest, mobile or URP. Check your target avatar in its actual environment."
-      ]
-    ],
-    "support": "If you need help, include the edition, Unity version, reproduction steps and Console error when contacting us through the product page.",
-    "top": "Back to top",
-    "updated": "Updated 2026-10-18 · Pro 0.5.1",
-    "rights": "Images show usage examples. Avatars, capture scenes and third-party paid reference assets are not included.",
-    "heroAlt": "An actual Unity render of pale blue crystals orbiting in a halo",
-    "interactionTitle": "Hold, charge, fire and return",
-    "interactionSteps": [
-      "Touch the halo first, then make a fist with that hand to pick it up. Opening your hand keeps it attached. Contact and gestures use the owner’s hands.",
-      "Use the holding hand’s thumbs-up to charge (default 3 seconds, adjustable 2–4). Changing gesture early cancels charging. After the ready light/audio cue, opening your hand retains energy.",
-      "Make a fist away from the original head position to fire forward through your knuckles, following your wrist. Choose Scatter, Beam or Volley in Settings. The halo stays held after firing.",
-      "To return, move the same hand to the original head position, open it, then make a new fist. Return takes priority even at full charge and needs no menu. Moving in with an already closed fist does not return it. A custom home uses its original position.",
-      "To transfer, open the holding hand, touch with the other hand, then make a fist; charging restarts. After returning, open and make a new fist to pick up again. Unlock gestures if needed.",
-      "PC: Halo Loom → PC → Expand → Charge ON → turn the same toggle OFF after the ready cue to fire. Turning it off early cancels. Cancel & return and Reset remain available."
-    ],
-    "update": "The standard update procedure is to back up, remove the old Halo and old tool files, import the new version, and recreate the Halo. Read the <a href=\"#reinstall\">removal and reinstallation steps</a>.",
-    "grabFaq": "Unlock gestures, touch the halo with your own hand, then make a fist. Thumbs-up charges; a fist away from home fires when ready. Open and make a new fist at home to return. Apply and save changes, then check using Build & Test. Normal animation preview does not simulate Client hand input.",
-    "row": [
-      "In-game interaction",
-      "Not included",
-      "Owner hold/transfer/charge/fire/head return and PC controls; SDK + MA + NDMF required"
-    ],
-    "imageClose": "Close image",
-    "imageLabel": "Enlarged image",
-    "reinstall": {
-      "title": "Important: remove the old version before reinstalling",
-      "link": "Read the update steps",
-      "nav": "Important: update / reinstall",
-      "flow": "Back up the project → remove the current Halo using the old tool → remove only the old HaloMaker tool files → import the new version → create the Halo again",
-      "steps": [
-        "Back up the project",
-        "remove the current Halo using the old tool",
-        "remove only the old HaloMaker tool files",
-        "import the new version",
-        "create the Halo again"
-      ],
-      "body": [
-        "Record your current settings before recreating the Halo. Use Remove / Restore in the old tool to remove only the Halo being updated, then save the scene before removing the old tool files. Keep your Avatar, other Halos, SDK / MA / NDMF, external source assets, Generated assets whose ownership you cannot confirm, and `.HaloLoomArchive`. This is not an instruction to delete the entire HaloMaker folder.",
-        "Import the complete new `.unitypackage`, create a new Halo and save the scene. Then check Build & Test and in-game controls on the target Avatar."
-      ],
-      "extraTitle": "Loading and applying an existing Halo",
-      "extra": "Current-structure 0.5.0 workspaces also support loading an existing Halo and using Apply Changes. The standard update instructions on this page use removal and reinstallation."
-    },
-    "creditsHtml": "<section id=\"credits\" lang=\"en\">\r\n  <h2><span>08</span>Sources and licenses</h2>\r\n  <p>The external asset sources and licenses are listed below. Their licenses are separate from the terms for Halo Loom, avatars, and other assets.</p>\r\n  <h3>Interaction sound sources</h3>\r\n  <p>The seven included interaction cues are edited from the CC0 1.0 sources below, using excerpts, filtering, level adjustment, fades, and limited layering or pitch adjustment. Only the edited cues are included; the complete original sound packs are not bundled.</p>\r\n  <ul>\r\n    <li><strong>Magical Mystery Spell Burst</strong> — Creator: CVLTIV8R; <a href=\"https://freesound.org/people/CVLTIV8R/sounds/814946/\" target=\"_blank\" rel=\"noopener noreferrer\">Source</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; Used for: Charge.</li>\r\n    <li><strong>Magic Potion FX</strong> — Creator: CVLTIV8R; <a href=\"https://freesound.org/people/CVLTIV8R/sounds/813142/\" target=\"_blank\" rel=\"noopener noreferrer\">Source</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; Used for: Take, Charge, Ready, Beam, Return.</li>\r\n    <li><strong>Atmospheric Interaction Sound Pack</strong> — Creator: legoluft (Submitted by: qubodup); <a href=\"https://opengameart.org/node/3371\" target=\"_blank\" rel=\"noopener noreferrer\">Source</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; Used for: Ready, Scatter, Beam, Volley. Source files used: space/link.wav, space/anchor_action.wav, space/magnet_action.wav.</li>\r\n  </ul>\r\n  <h3>External visual assets</h3>\r\n  <p><strong>Particle Pack (1.1)</strong> — Kenney Vleugels (Kenney.nl). <a href=\"https://kenney.nl/\" target=\"_blank\" rel=\"noopener noreferrer\">Kenney official website</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>.</p>\r\n  <p>Uses CC0 particle textures from Kenney Particle Pack (1.1).</p>\r\n  \r\n  <p>Additional filter template credits: Indigo Ray, Craig Nisbet, Zoltan Erdokovy, Heliagon, ThreeDee, Killst4r, Tim2501.</p>\r\n  <h3>Halo Loom production assets</h3>\n  <p>Some star-glint textures were AI-generated for Halo Loom. Heart masks are original procedural assets; other meshes, materials, animators and fluid shaders are Halo Loom production assets.</p>\r\n  <p>The CC0 labels above describe the relevant external assets. They do not label the entire Halo Loom product as CC0 or create a new sublicense for third-party assets.</p>\r\n</section>\r\n",
-    "creditsTitle": "Sources and licenses"
-  },
-  "zh-Hant": {
-    "manual": "使用說明",
-    "headline": "把光與動態，<br>變成自己的風格。",
-    "intro": "Halo Loom 是一款 Unity Editor 光環製作工具。從發光效果與裝飾素材開始，搭配顏色、自訂模型與動畫，做出自己的 Halo。",
-    "begin": "開始第一次設定",
-    "booth": "前往 BOOTH 商品頁",
-    "version": "製品版 0.5.1 · 無料版為獨立版本",
-    "releaseTitle": "0.5.1 — 更飽滿的蓄力與噴射",
-    "releaseItems": [
-      "裝飾素材蓄力時，光會逐步向內聚集；蓄滿後以柔和脈動提示可發射。",
-      "散射呈扇狀展開，光束集中成窄幅軌跡，連射分批射出。每種射法都有彩色噴流與向外擴散的粒子。",
-      "心形環的散開與尾韻改為多彩愛心，保留逐顆閃爍。",
-      "發射時，選用的小元素模型本體也會飛出並返回；Unity 檢查涵蓋全部 20 種內建裝飾。"
-    ],
-    "releaseNote": "範例為 Unity Editor 實際畫面。本次沒有重新驗證 VRChat Client、頭盔、多人可見性或 GPU 負載，請在預計使用的 Avatar 與環境確認。",
-    "devGalleryTitle": "0.5.1 的光與閃爍",
-    "devCaptureNote": "2026-10-18 以 Unity Editor 實際渲染的作例，圖片內文為日文；點選圖片可放大。",
-    "devEffects": [
-      [
-        "光與閃爍作例",
-        "dev-051-light-and-sparkle-JP.jpg",
-        "並列展示圓環、心形、星空與小元素光效的 0.5.1 Unity 作例"
-      ],
-      [
-        "多彩愛心與閃爍尾韻",
-        "dev-051-colorful-hearts-JP.jpg",
-        "心形環發射後多彩愛心散開與尾韻的 Unity 作例"
-      ]
-    ],
-    "devInteraction": [
-      [
-        "聚光、蓄滿、釋放",
-        "dev-051-charge-and-release-JP.jpg",
-        "小元素向內聚光蓄力、蓄滿脈動與粒子散開釋放的三階段"
-      ],
-      [
-        "散射、光束、連射",
-        "dev-051-three-release-styles-JP.jpg",
-        "彩色粒子與小元素模型呈現散射、光束、連射三種射法"
-      ]
-    ],
-    "skip": "跳到主要內容",
-    "contents": "本頁目錄",
-    "nav": [
-      "第一次使用",
-      "四個工作區",
-      "自訂素材與掛載位置",
-      "外觀與動畫",
-      "拿取、蓄力、發射與歸位",
-      "無料版與製品版",
-      "常見問題"
-    ],
-    "before": "操作前先備份專案。0.5.1 開發／確認環境為 Unity 2022.3.22f1／PC／Built-in、VRChat Avatars SDK 3.10.5、Modular Avatar 1.18.7、NDMF 1.14.8。相依套件需另行安裝；不代表最低版本、Quest／行動版或 URP 已驗收。",
-    "importNote": "完整匯入製品版的 Editor、Shaders、Audio。缺少 SDK／MA／NDMF 時，VRChat 後端排除編譯，無法建立／套用；無 SDK 編譯檢查不代表完整功能可使用。Shader 請放在 Editor 外。",
-    "steps": [
-      [
-        "匯入並開啟工具",
-        "完整匯入下載的 .unitypackage，等待編譯後開啟 <code>黒猫Dev &gt; Halo Loom</code>。"
-      ],
-      [
-        "指定 Avatar 與掛載物件",
-        "在「基本」將 Hierarchy 中的 Avatar 根物件拖入 Avatar 欄位。有效 Humanoid 會預設掛載 Head；若無法辨識頭骨，請直接指定掛載 Transform。"
-      ],
-      [
-        "調整位置與大小",
-        "設定位置、旋轉、半徑，也可勾選「在 Scene 中直接調整」。建議從較小的半徑開始，確認與頭部、耳朵的重疊。"
-      ],
-      [
-        "選擇外觀",
-        "在「外觀」選基礎效果、裝飾素材或混合，再調整顏色、數量與大小。自己的模型請參考下方「自訂素材與掛載位置」。"
-      ],
-      [
-        "選擇動畫",
-        "在「動態」選類別與動作，調整循環時間。純星空環則設定星點閃爍、游移與拖尾。"
-      ],
-      [
-        "建立與預覽",
-        "按「建立 Halo」，再按「預覽動畫」確認。修改既有 Halo 時，請先套用修改再預覽。"
-      ],
-      [
-        "儲存並在使用環境確認",
-        "儲存 Unity 場景。VRChat Avatar 也請用 SDK 的 Build & Test 確認。不要刪除使用中 Halo 所依賴的 Generated 資產。"
-      ]
-    ],
-    "freeStart": "使用無料版？請開啟 黒猫Dev > Halo Loom Free。基本流程相似，但可用的效果與動作不同。",
-    "workspaceIntro": "把「放在哪裡」「長什麼樣」「怎麼移動」分開設定，不用一次理解所有參數。",
-    "workspaces": [
-      [
-        "基本",
-        "指定 Avatar、掛載、位置、旋轉與半徑。「定位目前 Halo」會在 Hierarchy 選取並高亮物件，不改變 Scene 視窗的縮放。",
-        "01-basic-JP.png"
-      ],
-      [
-        "外觀",
-        "選基礎效果、裝飾素材或混合，設定素材、顏色、數量、大小、透明感與尾跡。可調項目會依目前樣式改變。",
-        "02-appearance-JP.png"
-      ],
-      [
-        "動態",
-        "選擇動作與循環時間，並透過說明理解動作效果。主體數量在「外觀」調整。",
-        "03-motion-JP.png"
-      ],
-      [
-        "進階",
-        "微調亂數種子、動作細節、演出時間、材質與烘焙品質。第一次使用可先保留預設值。",
-        "04-advanced-JP.png"
-      ]
-    ],
-    "screenshot": "實際 Unity 介面",
-    "enlarge": "點選圖片可放大",
-    "captureNote": "截圖為先前介面（2026-10-01）的操作示例；0.5.1 的配置與標示可能不同。實際設定請指定自己的 Avatar。",
-    "customIntro": "製品版不只能放星星與水晶，也能用自己製作的小物件。可以漂亮，也可以有一點搞笑。",
-    "customSteps": [
-      "在「外觀」選擇「裝飾素材」，或基礎效果與裝飾混合。",
-      "素材來源選「自訂素材」，指定 <strong>Project 視窗裡的 Prefab</strong>，不是 Hierarchy 中的場景物件。也可以改用 Mesh＋Material。",
-      "調整數量、排列方式與縮放。半徑影響軌道大小；裝飾縮放影響素材本身。",
-      "選擇沿著路徑、朝外、朝中心等方向。模型正面不一致時，調整素材的旋轉補正。",
-      "在「動態」選動作，建立或套用修改。工具使用生成的副本，不修改來源 Prefab、Mesh 或 Material。"
-    ],
-    "placementTitle": "不只頭頂，也能放到其他部位",
-    "placement": "在「基本」把掛載物件改成手腕、胸口、背部的 Transform，或自己建立的定位物件，再依該部位調整位置、旋轉與半徑。這是手動掛載，不是自動貼合各部位。",
-    "customWarning": "複製越多，面數、Renderer 與粒子成本也可能越高，請先從少量開始。成本估算無法涵蓋全部執行時生成與透明重疊；工具不保證第三方素材或 Runtime Component 的 VRChat 相容性。",
-    "clipTitle": "素材本身也可以播放動畫嗎？",
-    "clip": "可以選填 Generic AnimationClip，讓素材自身動畫與外層 Halo 動作分開。曲線需以素材本身為根；不支援 Humanoid Clip、Animation Events 或不相符綁定。若 Prefab 已有 Animator Controller／舊 Animation，請不指定額外 Clip 以保留原構成，或使用沒有 Controller 的素材。第三方 Animator 的 Editor 預覽不保證完整支援。",
-    "effects": [
-      [
-        "粒子弧光",
-        "02-light-trails.png"
-      ],
-      [
-        "能量線",
-        "04-energy-lines.png"
-      ],
-      [
-        "泡泡",
-        "03-bubbles.png"
-      ],
-      [
-        "星空環",
-        "01-starfield.png"
-      ]
-    ],
-    "effectNote": "圖片為實際 Unity 的效果組合範例，不是另外附贈的一鍵預設。能量線可以調粗細，泡泡可以調透明感。",
-    "motionTitle": "裝飾與光點共用 20 套動作",
-    "motion": "從柔和、螺旋、跳躍、編隊、演出五類挑選。建議先用輕柔動作確認素材大小，再試環面螺旋、小跳步或收束演出。衝撞類是視覺編舞，不是物理碰撞；大素材可能互相穿插。",
-    "starTitle": "星空以閃爍與微小游移呈現動態",
-    "star": "微小四芒星分布在中空的立體環身內。外觀調整密度、星點大小與環身厚度；動態調整背景閃爍、星芒閃光、游移與拖尾。星空本體使用自己的星點動畫，混合的裝飾則可以使用一般動作。",
-    "randomTitle": "隨機 A／B／C",
-    "random": "選至少三個相容候選後，將三種不同動作烘焙為 A → B → C 循環。循環時間代表完整三段；組合會儲存，不是遊戲裡每圈重新抽選。想換一組時使用重新隨機。",
-    "preview": "預覽播放的是已套用動畫。修改後請先套用；編輯前也請確認視窗上方的「目前 Halo」名稱是正確對象。想保留原版本時，使用「建立副本」。",
-    "columns": [
-      "項目",
-      "無料版",
-      "製品版"
-    ],
-    "rows": [
-      [
-        "基礎效果",
-        "柔光圓點／空心五角星",
-        "粒子／能量線／泡泡／星空"
-      ],
-      [
-        "動作",
-        "輕柔漂浮／波浪巡航",
-        "20 套＋隨機 A/B/C"
-      ],
-      [
-        "路徑",
-        "圓環",
-        "圓環／心形／花瓣"
-      ],
-      [
-        "內建裝飾與自訂素材",
-        "不包含",
-        "20 種裝飾；Prefab／Mesh＋Material"
-      ],
-      [
-        "掛載、顏色與大小",
-        "可調整",
-        "可調整"
-      ],
-      [
-        "遊戲內互動",
-        "未包含",
-        "本人手持／換手／蓄力／發射／頭上歸位及 PC 操作；需 SDK + MA + NDMF"
-      ],
-      [
-        "時間限制／浮水印",
-        "無",
-        "無"
-      ]
-    ],
-    "editionNote": "無料版不需要製品版，兩版可在同一專案共存，但不互相編輯彼此的生成物。價格與配布條件請查看 BOOTH 商品頁。",
-    "faq": [
-      [
-        "找不到 Shader，或畫面變粉紅色",
-        "確認完整匯入 Editor 與 Shaders，必要時重新匯入完整套件。製品版位置是 Assets/黒猫Dev/HaloMaker；無料版是 Assets/黒猫Dev/HaloLoomFree。Shader 必須在 Editor 外。仍有問題請提供 Console 中的 Shader 錯誤與使用環境。"
-      ],
-      [
-        "沒有偵測到已存在的 Halo",
-        "請在 Hierarchy 直接選取 Halo 本體，並確認視窗頂部的編輯對象。多個 Halo 請個別選取；先確認選取與 Avatar 指定，避免未辨識時直接重建造成重複。舊格式若顯示唯讀，可保留舊物件，另行設定新 Halo。"
-      ],
-      [
-        "改了設定，預覽卻沒有變",
-        "請先套用修改再預覽。關閉即時套用時，只修改欄位不會更新生成物；也請確認目前編輯的是哪個 Halo。"
-      ],
-      [
-        "手部操作沒有反應",
-        "解除手勢鎖定，以本人手先接觸再握拳拿取。比讚蓄力，蓄滿後離開原位握拳發射；原位鬆開再握拳歸位。變更後先套用、儲存，再 Build & Test。一般動畫預覽不會模擬 Client 手部輸入。"
-      ],
-      [
-        "太卡，或素材全部擠在一起",
-        "先降低装飾數量或星點密度，換輕量素材確認。自訂 Prefab 中的粒子、多個 Renderer 與透明重疊也會增加負載。成本提示不是完整效能診斷或 FPS 保證。"
-      ],
-      [
-        "更新、刪除時要注意什麼？",
-        "本頁標準更新流程為：備份後移除舊 Halo 與舊工具本體，再匯入新版並重新建立。請先看<a href=\"#reinstall\">刪除與重新安裝步驟</a>。"
-      ],
-      [
-        "所有環境都會長得一樣嗎？",
-        "圖片以 Unity Editor／Built-in／DX11 拍攝。世界亮度、相機與透明重疊都可能影響觀感，不代表支援 Quest、手機、URP 等所有環境。請在目標 Avatar 與實際使用環境確認。"
-      ]
-    ],
-    "support": "仍有問題時，請附上使用版本、Unity 版本、重現步驟與 Console 錯誤，透過商品頁聯繫。",
-    "top": "回到頁首",
-    "updated": "更新 2026-10-18 · 製品版 0.5.1",
-    "rights": "圖片為使用範例，不附 Avatar、拍攝場景或第三方付費參考素材。",
-    "heroAlt": "Unity 實際渲染的淡藍色水晶周回光環",
-    "interactionTitle": "拿取、蓄力、發射與歸位",
-    "interactionSteps": [
-      "先接觸光環，再以同一隻手握拳拿取；張手後仍固定在手上。接觸與手勢只接受本人雙手。",
-      "持有手比讚蓄力（預設3秒，可調2～4秒）；未蓄滿換手勢只取消蓄力。蓄滿有光效及音效提示，此後張手也保留能量。",
-      "離開頭上原位握拳發射，方向沿拳頭前方指節、跟隨手腕。設定可選散射／光束／連射，演出後仍保持手持。",
-      "放回：同一隻手移回頭上原位置，鬆開後重新握拳。蓄滿也優先歸位，不需要轉盤。已握拳才進入原位不觸發；自訂 home 使用該原位置。",
-      "換手時原手張開，另一手接觸後握拳，蓄力重新開始。放回後也要鬆開再握拳才能重新拿取；必要時解除手勢鎖定。",
-      "PC：Halo Loom → PC → 展開 → 開啟蓄力 → 蓄滿後關閉同一 Toggle 發射。未滿關閉只取消；也可使用取消並收回／重置特效。"
-    ],
-    "update": "本頁標準更新流程為：備份後移除舊 Halo 與舊工具本體，再匯入新版並重新建立。請先看<a href=\"#reinstall\">刪除與重新安裝步驟</a>。",
-    "grabFaq": "解除手勢鎖定，以本人手先接觸再握拳拿取。比讚蓄力，蓄滿後離開原位握拳發射；原位鬆開再握拳歸位。變更後先套用、儲存，再 Build & Test。一般動畫預覽不會模擬 Client 手部輸入。",
-    "row": [
-      "遊戲內互動",
-      "未包含",
-      "本人手持／換手／蓄力／發射／頭上歸位及 PC 操作；需 SDK + MA + NDMF"
-    ],
-    "imageClose": "關閉圖片",
-    "imageLabel": "放大圖片",
-    "reinstall": {
-      "title": "【重要】舊版更新請先移除，再重新安裝",
-      "link": "查看更新步驟",
-      "nav": "重要：更新／重新安裝",
-      "flow": "備份專案 → 用舊版工具刪除目前 Halo → 只移除舊 HaloMaker 工具本體 → 匯入新版 → 重新建立 Halo",
-      "steps": [
-        "備份專案",
-        "用舊版工具刪除目前 Halo",
-        "只移除舊 HaloMaker 工具本體",
-        "匯入新版",
-        "重新建立 Halo"
-      ],
-      "body": [
-        "重新建立前請先記下目前設定。使用舊版「刪除／恢復 → 刪除目前 Halo」移除這次要更新的光環，自行儲存場景後再移除舊工具本體。請保留 Avatar、其他 Halo、SDK／MA／NDMF、外部原素材、無法確認所有權的 Generated 與 `.HaloLoomArchive`；不是把整個 HaloMaker 資料夾刪光。",
-        "完整匯入新版 `.unitypackage`，重新建立 Halo 並儲存場景，再以目標 Avatar 的 Build & Test 與遊戲內操作確認。"
-      ],
-      "extraTitle": "既有 Halo 的載入與套用",
-      "extra": "0.5.0 現行工作集仍具備載入既有 Halo 後「套用修改」更新的能力；本頁的標準更新流程採刪除後重新安裝。"
-    },
-    "creditsHtml": "<section id=\"credits\" lang=\"zh-Hant\">\r\n  <h2><span>08</span>出典與授權</h2>\r\n  <p>以下列出外部素材的來源與授權。各素材授權與 Halo Loom 本體、Avatar 及其他素材的使用條款分開處理。</p>\r\n  <h3>操作音來源</h3>\r\n  <p>收錄的七個操作音由以下 CC0 1.0 素材剪輯，處理包括截取、濾波、音量與淡入淡出，以及部分疊層／變調。只收錄編輯後的操作音，未附完整原始音效包。</p>\r\n  <ul>\r\n    <li><strong>Magical Mystery Spell Burst</strong> — 作者: CVLTIV8R; <a href=\"https://freesound.org/people/CVLTIV8R/sounds/814946/\" target=\"_blank\" rel=\"noopener noreferrer\">來源</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; 使用於: Charge.</li>\r\n    <li><strong>Magic Potion FX</strong> — 作者: CVLTIV8R; <a href=\"https://freesound.org/people/CVLTIV8R/sounds/813142/\" target=\"_blank\" rel=\"noopener noreferrer\">來源</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; 使用於: Take, Charge, Ready, Beam, Return.</li>\r\n    <li><strong>Atmospheric Interaction Sound Pack</strong> — 作者: legoluft (提交者: qubodup); <a href=\"https://opengameart.org/node/3371\" target=\"_blank\" rel=\"noopener noreferrer\">來源</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>; 使用於: Ready, Scatter, Beam, Volley. 使用的原始檔案: space/link.wav, space/anchor_action.wav, space/magnet_action.wav.</li>\r\n  </ul>\r\n  <h3>外部視覺素材</h3>\r\n  <p><strong>Particle Pack (1.1)</strong> — Kenney Vleugels (Kenney.nl). <a href=\"https://kenney.nl/\" target=\"_blank\" rel=\"noopener noreferrer\">Kenney 官方網站</a>; <a href=\"https://creativecommons.org/publicdomain/zero/1.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC0 1.0 Universal</a>.</p>\r\n  <p>使用 Kenney Particle Pack (1.1) 的 CC0 粒子貼圖。</p>\r\n  \r\n  <p>濾鏡範本額外致謝: Indigo Ray, Craig Nisbet, Zoltan Erdokovy, Heliagon, ThreeDee, Killst4r, Tim2501.</p>\r\n  <h3>Halo Loom 製作素材</h3>\n  <p>部分星芒貼圖為 Halo Loom 製作的 AI 生成素材；愛心為程序製作的自有素材，其餘 Mesh、Material、Animator 與流體 Shader 為 Halo Loom 製作素材。</p>\r\n  <p>以上 CC0 標示適用於對應的外部素材，不代表 Halo Loom 整體採 CC0，也不新增第三方素材的再授權聲明。</p>\r\n</section>\r\n",
-    "creditsTitle": "素材出處與授權"
-  }
+// Halo Loom オンラインガイド — 本文データ（ja / en / zh-Hant）
+// build.mjs がこのデータから index.html / en.html / zh.html を生成します。
+// 文字列には簡単な HTML（<code> <strong> <a>）を含めてよい（信頼できる自作テキストのみ）。
+
+export const meta = {
+  version: '0.6.0',
+  updated: '2026-10-21',
+  booth: 'https://kuronekodev.booth.pm/items/8914197',
+  github: 'https://github.com/kuroneko11375/halo-loom-guide',
 };
+
+const pixabay = 'https://pixabay.com/service/license-summary/';
+const cc0 = 'https://creativecommons.org/publicdomain/zero/1.0/';
+
+// 効果音の出典（3 言語共通のデータ）
+export const soundSources = [
+  ['Charge', 'Holy Spell Cast', 'DRAGON-STUDIO', '450460'],
+  ['Scatter', 'Soul Steal 02', 'freesound_community', '43483'],
+  ['Beam', 'Healing Magic (5)', 'Yodguard', '378667'],
+  ['Volley', 'Sword Schwing', 'freesound_community', '40520'],
+  ['Twinkle', 'Magic Twinkle', 'Universfield', '244951'],
+  ['Twinkle', 'Chimes', 'freesound_community', '7035'],
+];
+
+// 新機能カード（画像は日本語表記の共通素材）
+const cards = ['01_halloween', '02_charge', '03_bubble', '04_heartburst', '05_starfield', '06_modes'];
+
+export const guides = {
+  ja: {
+    langName: '日本語',
+    title: 'Halo Loom 使い方ガイド',
+    description: 'Unity でハローを作り、VRChat で持って・チャージして・放てる Halo Loom の公式ガイドです。',
+    skip: '本文へ移動',
+    toc: 'もくじ',
+    top: 'ページの先頭へ',
+    enlarge: '画像をクリックで拡大',
+    close: '閉じる',
+    hero: {
+      eyebrow: 'HALO LOOM · USER GUIDE',
+      headline: '光と動きを、<br>あなたらしく。',
+      lead: 'Halo Loom は、光・装飾・動きを組み合わせてハローを作る Unity Editor ツールです。作ったハローは VRChat で手に取り、チャージして、空へ放てます。',
+      start: 'はじめての設定',
+      booth: 'BOOTH 商品ページ',
+      badge: '製品版 v0.6.0 · 2026-10-21',
+      imageAlt: 'Halo Loom v0.6.0 のメイン画像',
+    },
+    banner: {
+      title: '旧版から更新する方へ',
+      text: '更新は「削除してから入れ直す」が標準です。手順を確認してから作業してください。',
+      link: '更新手順を見る',
+    },
+    news: {
+      id: 'new', nav: 'v0.6.0 の新機能', title: 'v0.6.0 の新機能',
+      lead: 'ハロウィンテーマの追加と、光の演出・音・メニューの全面リニューアルです。画像はすべて Unity での実際の描画です。',
+      video: '紹介動画（約 60 秒・効果音のみ）',
+      cards: [
+        ['ハロウィンテーマ', 'バブルリングの中をスライムが流れ、魔女の魔法陣でチャージ。放ったおばけは、ぶつかるとコウモリになって弾けます。'],
+        ['光輝レイヤー', 'チャージの魔法陣、満充電の波紋、閃光・光の槍・彗星・光の羽まで、光の演出を作り直しました。'],
+        ['バブルリング', 'なめらかになった丸いハートと、透明感を増した円形リング。液だまりがひとつずつ流れていきます。'],
+        ['ハートの星芒', 'リングの中心から真上へ打ち上げ、空いっぱいに彩りのハートが広がります。'],
+        ['星空リング', '打ち上げた夜空に、6 つのオリジナル星座が一本ずつ描かれていきます。'],
+        ['3 つの発射モード', '通常の装飾は、拳の前方へ「拡散・ビーム・連射」で飛んでいきます。'],
+      ],
+      more: [
+        '<strong>音を一新：</strong>チャージ音は満充電まで途切れずに続き、空へ打ち上げるリングには星のきらめき音が付きました。',
+        '<strong>メニューを整理：</strong>VRChat 内のメニューは「Halo Loom」ひとつにまとめ、よく使う操作を 1 階層目に置き、アイコンを付けました。',
+        '<strong>常時のきらめき：</strong>ずっと漂う星屑と光の霧を、メニューからいつでもオン／オフできます。',
+        '<strong>ツール画面を整理：</strong>「基本エフェクト」を一番上に置き、スペシャルリングを独立させました。',
+        '<strong>修正：</strong>「変更を適用」で形を変えても見た目が更新されない問題、ハートの外側に円が出る問題を修正しました。',
+      ],
+    },
+    reinstall: {
+      id: 'reinstall', nav: '重要：更新・再インストール', title: '【重要】旧版からの更新は、削除してから入れ直し',
+      steps: ['プロジェクトをバックアップ', '旧版ツールの「削除／復元」で、更新したい Halo を削除', 'シーンを保存し、旧 HaloMaker のツール本体だけを削除', '新版の .unitypackage をインポート', 'Halo を作り直し、シーンを保存'],
+      keep: '削除しないもの：Avatar、ほかの Halo、VRChat SDK／Modular Avatar／NDMF、外部素材、所有関係が分からない Generated、<code>.HaloLoomArchive</code>（復元用）。HaloMaker フォルダーを丸ごと消す手順ではありません。',
+      tip: '作り直しに備えて、いまの設定（色・素材・動き）をメモかスクリーンショットで控えておくと安心です。',
+      after: '最後に、対象アバターで Build &amp; Test を行い、VRChat 内の操作を確認してください。',
+    },
+    start: {
+      id: 'start', nav: 'はじめての設定', title: 'はじめての設定',
+      env: '確認環境：Unity 2022.3.22f1 · PC · Built-in Render Pipeline · VRChat Avatars SDK 3.10.5 · Modular Avatar 1.18.7 · NDMF 1.14.8（SDK・MA・NDMF は別途導入してください）。Quest・モバイル・URP は確認対象外です。',
+      steps: [
+        ['インポートして開く', '.unitypackage をまるごとインポートし、メニューの <code>黒猫Dev › Halo Loom</code> を開きます。'],
+        ['アバターを指定', 'Hierarchy のアバターを「Avatar」欄へドラッグ。Humanoid なら頭（Head）が取り付け先になります。手首や背中に付けたいときは「取り付け先」を変更します。'],
+        ['見た目を選ぶ', '「形状と外観」タブの一番上「基本エフェクト」で、通常エフェクトかスペシャルリングを選びます（くわしくは次の章）。'],
+        ['大きさと動き', '半径を合わせ、「モーション」タブで動きを選びます。'],
+        ['作成してプレビュー', '「Halo を作成」を押し、プレビューで確認。あとから変えたら「変更を適用」を押します。'],
+        ['保存して VRChat で確認', 'シーンを保存し、SDK の Build &amp; Test で実際に持って・チャージして・放ってみましょう。'],
+      ],
+      free: '無料版はメニュー <code>黒猫Dev › Halo Loom Free</code> から開きます。流れは同じですが、使える見た目と動きが限られます。',
+    },
+    workspace: {
+      id: 'workspace', nav: 'ツール画面の見かた', title: 'ツール画面の見かた',
+      lead: '画面は 4 つのタブに分かれています。迷ったら「形状と外観」から上から順に決めていけば大丈夫です。',
+      tabs: [
+        ['形状と外観', '基本エフェクト → Halo の形 → 表示エフェクト → 半径 → 色、の順に並んでいます。'],
+        ['モーション', '動きの種類・ループ時間・方向。持つ／戻す（つかむ設定）もここ。'],
+        ['エフェクト', 'VRChat 内の演出（チャージ時間、光輝レイヤー、常時のきらめきの初期値など）とプレビュー。'],
+        ['詳細設定', '乱数シードやベイク品質など。最初は触らなくて大丈夫です。'],
+      ],
+      basicTitle: '基本エフェクト：通常エフェクトとスペシャルリング',
+      basic: [
+        ['通常エフェクト', '光のパーティクル・エネルギーライン・バブルクラスターから選び、<strong>Halo の形</strong>（円形・ハート・花びら）と<strong>表示エフェクト</strong>（エフェクトのみ／装飾のみ／エフェクト＋装飾）を組み合わせます。発射は拳の前方へ、3 つのモードで飛びます。'],
+        ['スペシャルリング', '<strong>円形バブルリング・ハートバブルリング・星空リング</strong>。形はリングごとに決まっていて、発射するとリングの中心から空へ打ち上がる専用の演出が付きます。表示エフェクトは「リングのみ」か「リング＋装飾」。'],
+      ],
+      halloween: 'ハロウィンテーマは、円形バブルリングとハートバブルリングでのみ選べます。',
+    },
+    motion: {
+      id: 'motion', nav: '見た目と動き', title: '見た目と動き',
+      motionTitle: '20 種類の動き',
+      motion: '浮遊・螺旋・跳躍・編隊・演出の 5 カテゴリーから選べます。「ランダム A／B／C」にすると、相性のよい 3 つの動きを順番につないで再生します（組み合わせは保存され、毎周抽選し直すものではありません）。衝突系の動きは見た目の演出で、物理判定はありません。',
+      starTitle: '星空リング',
+      star: '中空の立体リングに小さな星が散らばり、またたき・短い閃光・移動・軌跡を調整できます。星空自体は専用の動きで、組み合わせた装飾には通常のモーションを設定できます。',
+      ornamentTitle: '内蔵装飾 20 種類',
+      ornament: '星・クリスタル・ハート・羽根など 20 種類の装飾を内蔵。数・配置・向き・大きさ・色・発光を調整できます。自作の素材も使えます（「自作素材と取り付け位置」参照）。',
+      previewTip: 'プレビューは反映済みの内容を再生します。設定を変えたら「変更を適用」してから確認しましょう。別案を残したいときは「複製を作成」が便利です。',
+    },
+    interaction: {
+      id: 'interaction', nav: '持つ・チャージ・放つ・戻す', title: '持つ・チャージ・放つ・戻す',
+      lead: 'VRChat の中では、自分の手でハローを扱います（左右どちらの手でも OK）。',
+      steps: [
+        ['持つ', '光環に手で触れてから握ると、手に取れます。手を開いても同じ手に残ります。'],
+        ['チャージ', '持っている手で親指を立てたまま、設定した時間（初期 3 秒、2〜4 秒）待ちます。魔法陣が開き、チャージ音が満充電まで続きます。途中で手の形を変えると中止。'],
+        ['放つ', '満充電の合図のあと、頭の元の位置から離れたところで握ると発射。演出が終わっても手に残るので、続けてチャージできます。'],
+        ['戻す', '持っている手を頭の元の位置へ戻し、手を開いてからもう一度握ると収納。満充電でも収納が優先されます。'],
+        ['持ち替え', '元の手を開き、反対の手で触れて握ります（チャージはやり直し）。'],
+      ],
+      dirTitle: '発射の向き',
+      dirs: [
+        ['通常エフェクトの装飾', '拳の前方（手首から指の付け根の方向）へ。手首の向きに追従します。'],
+        ['スペシャルリング', 'リングの中心から真上へ打ち上がり、上空で広がります。'],
+        ['ハロウィンのおばけ', 'リングの演出は真上へ、おばけだけ拳の前方へ飛び出し、壁や人にぶつかるとコウモリになって弾けます（他人の画面を覆う演出ではありません）。'],
+      ],
+      wrist: '左手首の Halo を左手で（右も同様）持つと、元の位置に触れ続けるため、発射より収納が優先される場合があります。反対の手で持つか、手と一緒に動かない取り付け先を選んでください。',
+      pc: 'PC：Halo Loom › PC › 「ハローを展開」→「ON:チャージ / OFF:発射」を ON → 満充電後に OFF で発射。途中で OFF にすると中止です。',
+      gesture: '反応しないときは、VRChat のジェスチャー固定を解除し、実際の手の形が「親指を立てる／握る」に切り替わっているか確認してください。',
+    },
+    menu: {
+      id: 'menu', nav: 'VRChat 内のメニュー', title: 'VRChat 内のメニュー',
+      lead: 'アバターのメニューには「Halo Loom」がひとつだけ追加されます。中はよく使う順に並んでいます。',
+      items: [
+        ['Modes', '発射モード ›', '拡散／ビーム／連射（通常エフェクトのみ。スペシャルリングでは表示されません）'],
+        ['ShowHalo', 'ハロー表示', 'ハロー全体の表示・非表示'],
+        ['Effects', '追加エフェクト', '持つ・チャージ・発射などの演出のオン／オフ'],
+        ['Look', '見た目 ›', '色相・光の強さ・振ると光の尾・<strong>常時のきらめき</strong>'],
+        ['Reset', 'リセット', '演出をリセット'],
+        ['Cancel', '中止して戻す', 'いつでも中止して元の位置へ'],
+        ['PC', 'PC ›', 'デスクトップ用の展開・チャージ／発射・中止'],
+      ],
+      note: '「ハロー表示」「追加エフェクト」はツールの設定で有効にしている場合に表示されます。「常時のきらめき」の初期値はツールの「エフェクト」タブで決められます。',
+    },
+    custom: {
+      id: 'custom', nav: '自作素材と取り付け位置', title: '自作素材と取り付け位置',
+      steps: [
+        '「表示エフェクト」を「装飾」または「エフェクト＋装飾」にします。',
+        '素材の種類をカスタム素材にして、<strong>Project ウィンドウの Prefab</strong>（または Mesh と Material）を指定します。Hierarchy のオブジェクトは直接使えません。',
+        '数・配置・大きさを調整し、向き（パスに沿う／外向き／中心向き など）と回転補正を合わせます。',
+        '「変更を適用」。元の Prefab・Mesh・Material は書き換えず、生成した側を使います。',
+      ],
+      placeTitle: '頭以外にも付けられます',
+      place: '「取り付け先」を手首・胸・背中などの Transform に変えられます。部位に合わせて位置・回転・半径を調整してください（自動フィットではありません）。',
+      warn: '素材を増やすほど負荷も増えます。少ない数から確認してください。第三者素材の VRChat 対応は保証できません。素材自身のアニメーションには Generic の AnimationClip を指定できます（Humanoid・Animation Event は非対応）。',
+    },
+    editions: {
+      id: 'editions', nav: '無料版と製品版', title: '無料版と製品版',
+      cols: ['', '無料版', '製品版'],
+      rows: [
+        ['Halo の形', '円形', '円形・ハート・花びら'],
+        ['見た目', '柔らかい光点・中空の五芒星', '光のパーティクル・エネルギーライン・バブルクラスター・スペシャルリング（円形／ハートバブル・星空）・ハロウィンテーマ'],
+        ['動き', '穏やかな浮遊・波乗り周回', '20 種類＋ランダム A／B／C'],
+        ['装飾', '—', '内蔵 20 種類・自作 Prefab／Mesh＋Material'],
+        ['VRChat 内の操作', '—', '持つ・チャージ・3 つの発射・収納・PC 操作・メニュー・効果音（SDK＋MA＋NDMF が必要）'],
+        ['色・大きさ・取り付け先', '○', '○'],
+        ['時間制限・透かし', 'なし', 'なし'],
+      ],
+      note: '無料版は製品版なしで使え、同じプロジェクトに共存できます（互いの生成物は編集しません）。価格・配布条件は BOOTH をご確認ください。',
+    },
+    faq: {
+      id: 'faq', nav: '困ったときは', title: '困ったときは',
+      items: [
+        ['Shader が見つからない／ピンク色になる', 'パッケージ全体（Editor・Shaders・Visuals・Audio）を再インポートしてください。製品版の場所は <code>Assets/黒猫Dev/HaloMaker</code>、無料版は <code>Assets/黒猫Dev/HaloLoomFree</code> です。'],
+        ['変更したのに見た目が変わらない', '「変更を適用」を押してください。「変更を即時反映」がオフのときは、欄を変えるだけでは生成物は更新されません。上部の「編集中の Halo」が目的の Halo かも確認しましょう。'],
+        ['ハローの周りに円や光の帯が見える', 'Scene ビューでは、アニメーションが動いていないため、ゲーム内では隠れている部品が見えることがあります。複製したアバターが重なっていないかも確認してください。'],
+        ['手の操作が反応しない', 'ジェスチャー固定を解除し、自分の手で光環に触れてから握ってください。変更後は「変更を適用」→ シーン保存 → Build &amp; Test で確認します。'],
+        ['重い', '装飾の数や星の密度を下げ、軽い素材で確認してください。「常時のきらめき」をオフにするのも有効です。'],
+        ['見た目が環境で違う', '画像は Unity Editor（Built-in）での描画です。ワールドの明るさや透明の重なりで見え方は変わります。'],
+      ],
+      support: '解決しない場合は、使用版・Unity のバージョン・再現手順・Console のエラーを添えて、BOOTH の商品ページからお問い合わせください。',
+    },
+    credits: {
+      id: 'credits', nav: '出典・ライセンス', title: '出典・ライセンス',
+      lead: '外部素材の出典です。各素材のライセンスは、Halo Loom 本体の利用規約とは別に扱われます。',
+      soundTitle: '効果音',
+      sound: 'Take（取り出し）・Return（収納）は黒猫Dev によるオリジナル合成音です。ほかの効果音は以下の Pixabay 素材を切り出し、音量・フェード・フィルターなどを加工して使用しています（<a href="' + pixabay + '" target="_blank" rel="noopener">Pixabay Content License</a>）。効果音を単体で再配布・販売することはできません。',
+      soundCols: ['用途', '素材', '作者', 'Pixabay ID'],
+      visualTitle: '視覚素材',
+      visual: '<strong>Particle Pack (1.1)</strong> — Kenney（<a href="https://kenney.nl/" target="_blank" rel="noopener">kenney.nl</a>）、<a href="' + cc0 + '" target="_blank" rel="noopener">CC0 1.0</a>。',
+      own: 'ハロウィン・光輝レイヤーのテクスチャ、メニューアイコン、ハートなどは Halo Loom のための制作素材です（星芒の一部は AI 生成テクスチャを含みます）。CC0 の表示は該当する外部素材についての案内で、Halo Loom 全体を CC0 とするものではありません。',
+      avatar: '画像・動画のアバター：プラム Plum／あまとうさぎ（こまど）様。アバター・撮影シーン・第三者の有料素材は付属しません。',
+    },
+    footer: '画像・動画は Unity での実際の描画です。アバター・撮影用シーン・第三者の有料素材は付属しません。',
+    updatedLabel: '更新',
+  },
+
+  en: {
+    langName: 'English',
+    title: 'Halo Loom User Guide',
+    description: 'The official guide to Halo Loom — build halos in Unity, then hold, charge and release them in VRChat.',
+    skip: 'Skip to content',
+    toc: 'Contents',
+    top: 'Back to top',
+    enlarge: 'Click an image to enlarge',
+    close: 'Close',
+    hero: {
+      eyebrow: 'HALO LOOM · USER GUIDE',
+      headline: 'Weave light and motion<br>into your own halo.',
+      lead: 'Halo Loom is a Unity Editor tool for building halos from light, ornaments and motion. In VRChat you can take your halo in hand, charge it and send it flying.',
+      start: 'Getting started',
+      booth: 'BOOTH store page',
+      badge: 'Full version v0.6.0 · 2026-10-21',
+      imageAlt: 'Halo Loom v0.6.0 key visual',
+    },
+    banner: {
+      title: 'Updating from an older version?',
+      text: 'The standard update is remove first, then reinstall. Please read the steps before you start.',
+      link: 'See the update steps',
+    },
+    news: {
+      id: 'new', nav: 'What’s new in v0.6.0', title: 'What’s new in v0.6.0',
+      lead: 'A new Halloween theme plus a full refresh of the light effects, sounds and menu. Every image is an actual Unity render. (Image captions are in Japanese.)',
+      video: 'Promo video (about 60 s, sound effects only)',
+      cards: [
+        ['Halloween theme', 'Slime flows through the bubble ring and a witch’s sigil opens as you charge. The released ghost bursts into bats when it hits something.'],
+        ['Radiance layer', 'Rebuilt from the ground up: a charge sigil, ready ripples, then a flash, light lances, comets and light feathers.'],
+        ['Bubble rings', 'A smoother rounded heart and a clearer circle ring, with liquid pockets flowing one by one.'],
+        ['Heart starburst', 'Launches straight up from the ring center and fills the sky with colorful hearts.'],
+        ['Starfield ring', 'Six original constellations are drawn line by line across the night sky.'],
+        ['Three fire modes', 'Standard ornaments fly forward from your fist as Scatter, Beam or Volley.'],
+      ],
+      more: [
+        '<strong>New sounds:</strong> the charge sound now runs all the way to full charge, and rings that launch into the sky get a twinkling star sound.',
+        '<strong>Tidier menu:</strong> everything lives in a single “Halo Loom” menu, the most-used controls sit on the first page, and every item has an icon.',
+        '<strong>Idle sparkle:</strong> turn the ever-drifting stardust and glow on or off from the menu at any time.',
+        '<strong>Cleaner tool window:</strong> “Base effect” now comes first, and the special rings have their own section.',
+        '<strong>Fixes:</strong> Apply Changes now updates the mesh when you change shape, and the extra circle around heart halos is gone.',
+      ],
+    },
+    reinstall: {
+      id: 'reinstall', nav: 'Important: updating', title: 'Important: to update, remove first and reinstall',
+      steps: ['Back up your project', 'Use the old tool’s Remove / Restore to remove the Halo you want to update', 'Save the scene, then delete only the old HaloMaker tool files', 'Import the new .unitypackage', 'Create the Halo again and save the scene'],
+      keep: 'Do not delete: avatars, other Halos, VRChat SDK / Modular Avatar / NDMF, external assets, Generated assets you cannot confirm you own, or <code>.HaloLoomArchive</code> (used for restoring). This is not a “delete the whole HaloMaker folder” procedure.',
+      tip: 'Note down or screenshot your current settings (colors, ornaments, motion) so recreating the Halo is easy.',
+      after: 'Finally, run Build &amp; Test on your avatar and try the controls in VRChat.',
+    },
+    start: {
+      id: 'start', nav: 'Getting started', title: 'Getting started',
+      env: 'Tested with Unity 2022.3.22f1 · PC · Built-in Render Pipeline · VRChat Avatars SDK 3.10.5 · Modular Avatar 1.18.7 · NDMF 1.14.8 (install SDK, MA and NDMF separately). Quest, mobile and URP are not covered.',
+      steps: [
+        ['Import and open', 'Import the whole .unitypackage and open <code>黒猫Dev › Halo Loom</code> from the menu bar.'],
+        ['Choose your avatar', 'Drag your avatar from the Hierarchy into the Avatar field. For a Humanoid avatar the Head becomes the mount point; change “Attach To” for wrists, back and so on.'],
+        ['Pick a look', 'At the top of the Shape &amp; look tab, choose a standard effect or a special ring under “Base effect” (see the next chapter).'],
+        ['Size and motion', 'Adjust the radius, then pick a motion in the Motion tab.'],
+        ['Create and preview', 'Press Create Halo and check the preview. After later edits, press Apply Changes.'],
+        ['Save and test in VRChat', 'Save the scene and use the SDK’s Build &amp; Test to hold, charge and release it for real.'],
+      ],
+      free: 'The free edition opens from <code>黒猫Dev › Halo Loom Free</code>. The flow is the same with fewer looks and motions.',
+    },
+    workspace: {
+      id: 'workspace', nav: 'The tool window', title: 'The tool window',
+      lead: 'The window has four tabs. If in doubt, start at the top of Shape &amp; look and work downward.',
+      tabs: [
+        ['Shape &amp; look', 'Base effect → Halo style → Display → Radius → Color, in that order.'],
+        ['Motion', 'Motion type, loop time and direction, plus the hold / return (grab) settings.'],
+        ['Effects', 'In-VRChat effects (charge time, Radiance layer, idle-sparkle default) and the effect preview.'],
+        ['Advanced', 'Random seeds, bake quality and other details. You can leave these alone at first.'],
+      ],
+      basicTitle: 'Base effect: standard effects and special rings',
+      basic: [
+        ['Standard effects', 'Pick Particle Arc, Energy Line or Bubble Cluster, then combine a <strong>Halo style</strong> (circle, heart, flower) with a <strong>Display</strong> mode (effects only, ornaments only, or both). Shots fly forward from your fist in three modes.'],
+        ['Special rings', '<strong>Circle Bubble Ring, Heart Bubble Ring and Starfield Ring.</strong> Each ring has a fixed shape and its own release show that launches upward from the ring center. Display is “Ring only” or “Ring + ornaments”.'],
+      ],
+      halloween: 'The Halloween theme is available for the Circle and Heart Bubble Rings only.',
+    },
+    motion: {
+      id: 'motion', nav: 'Looks and motion', title: 'Looks and motion',
+      motionTitle: '20 motions',
+      motion: 'Choose from five categories: floating, spirals, hops, formations and showpieces. “Random A / B / C” chains three compatible motions in order (the combination is saved; it is not re-rolled every loop). Collision-style motions are visual only — there is no physics.',
+      starTitle: 'Starfield ring',
+      star: 'Tiny stars fill a hollow 3D ring; adjust twinkle, short flashes, drift and trails. The starfield runs its own animation, and any ornaments you add use the normal motions.',
+      ornamentTitle: '20 built-in ornaments',
+      ornament: 'Stars, crystals, hearts, feathers and more — 20 built-in ornaments with adjustable count, layout, orientation, size, color and glow. You can also bring your own (see “Custom assets and mounting”).',
+      previewTip: 'The preview plays what has been applied. After changing settings, Apply Changes and then preview. Use “Duplicate” to keep alternate versions.',
+    },
+    interaction: {
+      id: 'interaction', nav: 'Hold, charge, release, return', title: 'Hold, charge, release, return',
+      lead: 'In VRChat you handle the halo with your own hands (either hand works).',
+      steps: [
+        ['Hold', 'Touch the halo, then make a fist to take it. It stays in that hand even if you open it.'],
+        ['Charge', 'Keep a thumbs-up with the holding hand for the charge time (3 s by default, 2–4 s). A sigil opens and the charge sound plays until full. Changing the gesture early cancels.'],
+        ['Release', 'After the ready cue, make a fist away from the original spot on your head to fire. The halo stays in your hand, so you can charge again.'],
+        ['Return', 'Bring the holding hand back to the original spot on your head, open it, then make a fist again. Returning always wins, even when fully charged.'],
+        ['Switch hands', 'Open the holding hand, touch the halo with the other hand and make a fist (charging restarts).'],
+      ],
+      dirTitle: 'Which way it fires',
+      dirs: [
+        ['Standard-effect ornaments', 'Forward from your fist (wrist toward knuckles), following your wrist.'],
+        ['Special rings', 'Straight up from the ring center, unfolding overhead.'],
+        ['Halloween ghost', 'The ring effects go straight up while the ghost alone flies forward from your fist and bursts into bats when it hits a wall or a player (it never covers anyone’s screen).'],
+      ],
+      wrist: 'Holding a left-wrist Halo with the left hand (or right with right) keeps touching the home spot, so returning may win over firing. Use the other hand, or a mount point that does not move with the holding hand.',
+      pc: 'PC: Halo Loom › PC › “Expand halo” → turn “ON: Charge / OFF: Fire” on → turn it off after full charge to fire. Turning it off early cancels.',
+      gesture: 'If nothing happens, unlock gestures in VRChat and check that your hand actually switches to thumbs-up / fist.',
+    },
+    menu: {
+      id: 'menu', nav: 'In-game menu', title: 'In-game menu',
+      lead: 'Only one entry, “Halo Loom”, is added to your avatar menu. Inside, controls are ordered by how often you use them.',
+      items: [
+        ['Modes', 'Fire mode ›', 'Scatter / Beam / Volley (standard effects only; hidden for special rings)'],
+        ['ShowHalo', 'Show halo', 'Show or hide the whole halo'],
+        ['Effects', 'Interaction effects', 'Turn the hold / charge / release effects on or off'],
+        ['Look', 'Look ›', 'Hue, intensity, motion trails and <strong>idle sparkle</strong>'],
+        ['Reset', 'Reset effects', 'Reset the effects'],
+        ['Cancel', 'Cancel &amp; return', 'Stop at any time and return the halo'],
+        ['PC', 'PC ›', 'Desktop expand, charge / fire and cancel'],
+      ],
+      note: '“Show halo” and “Interaction effects” appear when enabled in the tool. The idle-sparkle default is set in the tool’s Effects tab. Menu labels follow the language you chose in the tool.',
+    },
+    custom: {
+      id: 'custom', nav: 'Custom assets and mounting', title: 'Custom assets and mounting',
+      steps: [
+        'Set Display to “Ornaments” or “Effects + Ornaments”.',
+        'Set the asset type to custom and assign a <strong>Prefab from the Project window</strong> (or a Mesh and Material). Hierarchy objects cannot be used directly.',
+        'Adjust count, layout and size, then set orientation (along path / outward / toward center, etc.) and rotation offset.',
+        'Press Apply Changes. Your original Prefab, Mesh and Material are never modified; generated copies are used.',
+      ],
+      placeTitle: 'Not just the head',
+      place: 'Change “Attach To” to a wrist, chest, back or any Transform, then adjust position, rotation and radius for that spot (there is no automatic fitting).',
+      warn: 'More assets means more load — start with a small count. VRChat compatibility of third-party assets is not guaranteed. A Generic AnimationClip can drive the asset’s own animation (Humanoid clips and animation events are not supported).',
+    },
+    editions: {
+      id: 'editions', nav: 'Free vs full', title: 'Free vs full',
+      cols: ['', 'Free', 'Full'],
+      rows: [
+        ['Halo style', 'Circle', 'Circle, heart, flower'],
+        ['Looks', 'Soft dots, hollow pentagram', 'Particle Arc, Energy Line, Bubble Cluster, special rings (circle / heart bubble, starfield), Halloween theme'],
+        ['Motion', 'Gentle float, wave cruise', '20 motions + Random A / B / C'],
+        ['Ornaments', '—', '20 built-in, your own Prefab / Mesh + Material'],
+        ['In-VRChat controls', '—', 'Hold, charge, three fire modes, return, PC controls, menu and sounds (needs SDK + MA + NDMF)'],
+        ['Color, size, mount point', '✓', '✓'],
+        ['Time limit / watermark', 'None', 'None'],
+      ],
+      note: 'The free edition works without the full version and both can live in one project (neither edits the other’s output). See BOOTH for price and terms.',
+    },
+    faq: {
+      id: 'faq', nav: 'Troubleshooting', title: 'Troubleshooting',
+      items: [
+        ['Shader not found / everything is pink', 'Re-import the whole package (Editor, Shaders, Visuals, Audio). The full version lives in <code>Assets/黒猫Dev/HaloMaker</code>, the free one in <code>Assets/黒猫Dev/HaloLoomFree</code>.'],
+        ['My change doesn’t show up', 'Press Apply Changes — with “Apply changes live” off, editing a field alone does not update the generated halo. Also check that “Editing Halo” at the top is the one you mean.'],
+        ['I see a circle or light band around the halo', 'In the Scene view animations are not running, so parts that are hidden in game can show. Also check that a duplicated avatar is not overlapping.'],
+        ['Hand controls don’t respond', 'Unlock gestures, touch the halo with your own hand, then make a fist. After edits: Apply Changes → save the scene → Build &amp; Test.'],
+        ['It feels heavy', 'Lower the ornament count or star density and test with lighter assets. Turning off idle sparkle also helps.'],
+        ['It looks different elsewhere', 'Images are Unity Editor (Built-in) renders. World lighting and overlapping transparency change how it looks.'],
+      ],
+      support: 'Still stuck? Contact us from the BOOTH page with your version, Unity version, steps to reproduce and any Console errors.',
+    },
+    credits: {
+      id: 'credits', nav: 'Sources and licenses', title: 'Sources and licenses',
+      lead: 'Sources of external assets. Their licenses are separate from the Halo Loom terms of use.',
+      soundTitle: 'Sound effects',
+      sound: 'Take and Return are original sounds synthesized by 黒猫Dev. The other sounds are edited (trimmed, faded, filtered, level-adjusted) from the Pixabay sources below under the <a href="' + pixabay + '" target="_blank" rel="noopener">Pixabay Content License</a>. Do not redistribute or sell the sounds on their own.',
+      soundCols: ['Cue', 'Source', 'Creator', 'Pixabay ID'],
+      visualTitle: 'Visual assets',
+      visual: '<strong>Particle Pack (1.1)</strong> — Kenney (<a href="https://kenney.nl/" target="_blank" rel="noopener">kenney.nl</a>), <a href="' + cc0 + '" target="_blank" rel="noopener">CC0 1.0</a>.',
+      own: 'The Halloween and Radiance textures, menu icons, hearts and similar assets were made for Halo Loom (some starburst textures include AI-generated textures). CC0 notes refer to the listed external assets only; Halo Loom as a whole is not CC0.',
+      avatar: 'Avatar in images and video: Plum by Amatousagi (Komado). Avatars, scenes and third-party paid assets are not included.',
+    },
+    footer: 'Images and video are actual Unity renders. Avatars, scenes and third-party paid assets are not included.',
+    updatedLabel: 'Updated',
+  },
+
+  'zh-Hant': {
+    langName: '繁體中文',
+    title: 'Halo Loom 使用說明',
+    description: 'Halo Loom 官方說明：在 Unity 製作光環，並在 VRChat 裡拿在手上、蓄力、發射。',
+    skip: '跳到內容',
+    toc: '目錄',
+    top: '回到頂端',
+    enlarge: '點圖片可放大',
+    close: '關閉',
+    hero: {
+      eyebrow: 'HALO LOOM · USER GUIDE',
+      headline: '把光與動態，<br>編成你的光環。',
+      lead: 'Halo Loom 是用光、裝飾與動態組合出光環的 Unity Editor 工具。做好的光環能在 VRChat 裡拿在手上、蓄力，然後發射出去。',
+      start: '開始設定',
+      booth: 'BOOTH 商品頁',
+      badge: '製品版 v0.6.0 · 2026-10-21',
+      imageAlt: 'Halo Loom v0.6.0 主視覺',
+    },
+    banner: {
+      title: '從舊版更新的人請先看這裡',
+      text: '更新的標準做法是「先刪除、再重新安裝」，請先確認步驟再動手。',
+      link: '查看更新步驟',
+    },
+    news: {
+      id: 'new', nav: 'v0.6.0 新功能', title: 'v0.6.0 新功能',
+      lead: '新增萬聖節主題，並全面重做光效、音效與選單。所有圖片都是 Unity 實際算出的畫面（圖片內文字為日文）。',
+      video: '介紹影片（約 60 秒，只有音效）',
+      cards: [
+        ['萬聖節主題', '泡泡環裡流著黏液，蓄力時展開魔女法陣；發射出去的幽靈撞到東西就變成一群蝙蝠。'],
+        ['光輝層', '從蓄力法陣、蓄滿波紋，到閃光、光槍、彗星與光羽，光效全部重新製作。'],
+        ['泡泡環', '更圓滑的愛心與更清透的圓環，管內液團一顆一顆流過。'],
+        ['愛心星芒', '從環中心往正上方射出，在空中綻放滿天彩色愛心。'],
+        ['星空環', '在射上去的夜空裡，一筆一筆畫出 6 個原創星座。'],
+        ['三種發射模式', '一般裝飾會從拳頭前方以「散射／光束／連射」飛出去。'],
+      ],
+      more: [
+        '<strong>音效更新：</strong>蓄力聲會一路延續到蓄滿；往天空發射的光環多了星星閃爍的聲音。',
+        '<strong>選單整理：</strong>VRChat 選單只收在一個「Halo Loom」裡，常用功能放在第一層，每一格都有圖示。',
+        '<strong>常駐亮粉：</strong>一直飄著的星塵與光霧，可以隨時從選單開關。',
+        '<strong>工具介面整理：</strong>「基礎效果」放到最上面，特殊光環獨立成一區。',
+        '<strong>修正：</strong>「套用修改」改形狀後外觀沒更新的問題，以及愛心外面多一圈的問題。',
+      ],
+    },
+    reinstall: {
+      id: 'reinstall', nav: '重要：更新與重新安裝', title: '【重要】從舊版更新：先刪除，再重新安裝',
+      steps: ['備份專案', '用舊版工具的「刪除／恢復」刪除要更新的 Halo', '儲存場景，只刪除舊 HaloMaker 的工具本體', '匯入新版 .unitypackage', '重新建立 Halo 並儲存場景'],
+      keep: '不要刪除：Avatar、其他 Halo、VRChat SDK／Modular Avatar／NDMF、外部素材、無法確認歸屬的 Generated，以及 <code>.HaloLoomArchive</code>（復原用）。這不是把整個 HaloMaker 資料夾刪掉的做法。',
+      tip: '建議先把目前的設定（顏色、素材、動態）記下來或截圖，重建時比較輕鬆。',
+      after: '最後請用目標 Avatar 執行 Build &amp; Test，並在 VRChat 裡實際操作確認。',
+    },
+    start: {
+      id: 'start', nav: '開始設定', title: '開始設定',
+      env: '確認環境：Unity 2022.3.22f1 · PC · Built-in Render Pipeline · VRChat Avatars SDK 3.10.5 · Modular Avatar 1.18.7 · NDMF 1.14.8（SDK、MA、NDMF 需另外安裝）。Quest、行動平台與 URP 不在確認範圍內。',
+      steps: [
+        ['匯入並開啟', '匯入完整的 .unitypackage，從選單開啟 <code>黒猫Dev › Halo Loom</code>。'],
+        ['指定 Avatar', '把 Hierarchy 裡的 Avatar 拖到「Avatar」欄。Humanoid 會自動以頭部為掛點；想掛在手腕或背後，改「掛載物件」即可。'],
+        ['選外觀', '在「造型與外觀」頁最上方的「基礎效果」選一般效果或特殊光環（下一章說明）。'],
+        ['大小與動態', '調好半徑，再到「動態」頁選動作。'],
+        ['建立並預覽', '按「建立 Halo」並預覽；之後再修改就按「套用修改」。'],
+        ['儲存並在 VRChat 確認', '儲存場景，用 SDK 的 Build &amp; Test 實際拿起來、蓄力、發射看看。'],
+      ],
+      free: '免費版從選單 <code>黒猫Dev › Halo Loom Free</code> 開啟，流程相同，但可用的外觀與動態較少。',
+    },
+    workspace: {
+      id: 'workspace', nav: '工具畫面說明', title: '工具畫面說明',
+      lead: '畫面分成 4 個分頁。不確定時，從「造型與外觀」由上往下依序決定就好。',
+      tabs: [
+        ['造型與外觀', '依序是：基礎效果 → Halo 樣式 → 顯示效果 → 半徑 → 顏色。'],
+        ['動態', '動作類型、循環時間、方向，以及拿取／歸位（抓取）設定。'],
+        ['特效', 'VRChat 裡的演出（蓄力秒數、光輝層、常駐亮粉預設值等）與預覽。'],
+        ['進階', '亂數種子、烘焙品質等細節，一開始不用動。'],
+      ],
+      basicTitle: '基礎效果：一般效果與特殊光環',
+      basic: [
+        ['一般效果', '從粒子弧光、能量線、泡泡群環中選一個，再搭配 <strong>Halo 樣式</strong>（圓形／愛心／花瓣）與 <strong>顯示效果</strong>（只有效果／只有裝飾／效果＋裝飾）。發射會從拳頭前方以三種模式飛出。'],
+        ['特殊光環', '<strong>圓形泡泡環、愛心泡泡環、星空環</strong>。形狀由光環決定，發射時會從環中心往天空展開專屬演出。顯示效果為「只有光環」或「光環＋裝飾素材」。'],
+      ],
+      halloween: '萬聖節主題只適用於圓形泡泡環與愛心泡泡環。',
+    },
+    motion: {
+      id: 'motion', nav: '外觀與動態', title: '外觀與動態',
+      motionTitle: '20 種動作',
+      motion: '分成漂浮、螺旋、跳躍、編隊、演出 5 類。選「隨機 A／B／C」會把 3 個相容的動作依序串接播放（組合會被保存，不是每圈重抽）。碰撞類動作只是視覺演出，沒有物理判定。',
+      starTitle: '星空環',
+      star: '細小的星星散布在中空的立體環身裡，可調整閃爍、短暫閃光、游移與拖尾。星空本身使用專屬動畫，搭配的裝飾則使用一般動作。',
+      ornamentTitle: '內建 20 種裝飾',
+      ornament: '星星、水晶、愛心、羽毛等 20 種內建裝飾，可調整數量、排列、朝向、大小、顏色與發光，也能使用自己的素材（見「自訂素材與掛載位置」）。',
+      previewTip: '預覽播放的是已套用的內容。改完設定請先「套用修改」再預覽；想保留不同版本可以用「建立副本」。',
+    },
+    interaction: {
+      id: 'interaction', nav: '拿取・蓄力・發射・歸位', title: '拿取・蓄力・發射・歸位',
+      lead: '在 VRChat 裡，用自己的手操作光環（左右手都可以）。',
+      steps: [
+        ['拿取', '先用手碰到光環再握拳，就能拿在手上；張開手也會留在同一隻手。'],
+        ['蓄力', '用持有的那隻手比讚，維持設定的時間（預設 3 秒，可調 2～4 秒）。法陣展開，蓄力聲會一路響到蓄滿；中途改手勢就會取消。'],
+        ['發射', '蓄滿提示後，在離開頭上原位的地方握拳就會發射。演出結束後光環仍在手上，可以繼續蓄力。'],
+        ['歸位', '把持有的手移回頭上原本的位置，張開後再握拳就會收回；即使蓄滿也優先收回。'],
+        ['換手', '原本的手張開，用另一隻手碰到光環後握拳（蓄力會重新開始）。'],
+      ],
+      dirTitle: '發射方向',
+      dirs: [
+        ['一般效果的裝飾', '往拳頭前方（手腕朝指根的方向），會跟著手腕轉向。'],
+        ['特殊光環', '從環中心往正上方射出，在上空展開。'],
+        ['萬聖節的幽靈', '光環的演出往正上方，只有幽靈會往拳頭前方飛出，撞到牆或人就變成蝙蝠散開（不會遮住別人的畫面）。'],
+      ],
+      wrist: '用左手拿左手腕上的 Halo（右邊同理）時，會一直碰到原位，可能優先收回而不發射。請改用另一隻手拿，或選擇不會跟著持有手移動的掛點。',
+      pc: 'PC：Halo Loom › PC ›「展開光環」→ 打開「開：蓄力／關：發射」→ 蓄滿後關閉即發射；中途關閉則取消。',
+      gesture: '沒反應時，請先解除 VRChat 的手勢鎖定，並確認手勢真的切換成比讚／握拳。',
+    },
+    menu: {
+      id: 'menu', nav: 'VRChat 選單', title: 'VRChat 選單',
+      lead: 'Avatar 選單只會多一格「Halo Loom」，裡面依常用程度排列。',
+      items: [
+        ['Modes', '發射模式 ›', '散射／光束／連射（只有一般效果；特殊光環不顯示）'],
+        ['ShowHalo', '光環顯示', '顯示或隱藏整個光環'],
+        ['Effects', '互動特效', '拿取、蓄力、發射等演出的開關'],
+        ['Look', '外觀 ›', '色相、亮度、揮動光尾、<strong>常駐亮粉</strong>'],
+        ['Reset', '重置特效', '重置演出'],
+        ['Cancel', '取消並收回', '隨時中止並收回原位'],
+        ['PC', 'PC ›', '桌機用的展開、蓄力／發射、取消'],
+      ],
+      note: '「光環顯示」「互動特效」在工具中啟用時才會出現；「常駐亮粉」的預設值在工具的「特效」頁設定。選單語言會跟著工具選的語言。',
+    },
+    custom: {
+      id: 'custom', nav: '自訂素材與掛載位置', title: '自訂素材與掛載位置',
+      steps: [
+        '把「顯示效果」設成「裝飾素材」或「混合」。',
+        '素材類型選自訂素材，指定 <strong>Project 視窗裡的 Prefab</strong>（或 Mesh＋Material）。Hierarchy 裡的物件不能直接使用。',
+        '調整數量、排列與大小，再設定朝向（沿路徑／朝外／朝中心等）與旋轉補正。',
+        '按「套用修改」。原本的 Prefab、Mesh、Material 不會被改動，使用的是產生出來的副本。',
+      ],
+      placeTitle: '不只能戴在頭上',
+      place: '「掛載物件」可以改成手腕、胸口、背後等任何 Transform，再依位置調整位置、旋轉與半徑（不會自動貼合）。',
+      warn: '素材越多負擔越大，建議先用少量確認。第三方素材在 VRChat 的相容性無法保證。素材本身的動畫可指定 Generic AnimationClip（不支援 Humanoid 與 Animation Event）。',
+    },
+    editions: {
+      id: 'editions', nav: '免費版與製品版', title: '免費版與製品版',
+      cols: ['', '免費版', '製品版'],
+      rows: [
+        ['Halo 樣式', '圓形', '圓形、愛心、花瓣'],
+        ['外觀', '柔和光點、中空五芒星', '粒子弧光、能量線、泡泡群環、特殊光環（圓形／愛心泡泡環、星空環）、萬聖節主題'],
+        ['動態', '輕柔漂浮、波浪巡航', '20 種＋隨機 A／B／C'],
+        ['裝飾', '—', '內建 20 種、自訂 Prefab／Mesh＋Material'],
+        ['VRChat 內操作', '—', '拿取、蓄力、三種發射、收回、PC 操作、選單與音效（需 SDK＋MA＋NDMF）'],
+        ['顏色・大小・掛點', '○', '○'],
+        ['時間限制・浮水印', '無', '無'],
+      ],
+      note: '免費版不需要製品版也能使用，兩者可以放在同一個專案（不會互相修改產物）。價格與條件請見 BOOTH。',
+    },
+    faq: {
+      id: 'faq', nav: '常見問題', title: '常見問題',
+      items: [
+        ['找不到 Shader／整個變粉紅色', '請重新匯入完整套件（Editor、Shaders、Visuals、Audio）。製品版位於 <code>Assets/黒猫Dev/HaloMaker</code>，免費版位於 <code>Assets/黒猫Dev/HaloLoomFree</code>。'],
+        ['改了設定但外觀沒變', '請按「套用修改」；「即時套用修改」關閉時，只改欄位不會更新產物。也請確認上方「目前 Halo」是你要改的那一個。'],
+        ['光環外面多了一圈或一條光帶', 'Scene 視窗裡動畫沒有在跑，遊戲中會隱藏的部件可能會顯示出來；也請確認是不是有複製的 Avatar 疊在一起。'],
+        ['手部操作沒反應', '解除手勢鎖定，用自己的手碰到光環再握拳。修改後請「套用修改」→ 儲存場景 → Build &amp; Test。'],
+        ['覺得很重', '減少裝飾數量或星空密度，用較輕的素材確認；關閉「常駐亮粉」也有幫助。'],
+        ['在其他環境看起來不一樣', '圖片是 Unity Editor（Built-in）的畫面，世界光線與透明重疊都會影響外觀。'],
+      ],
+      support: '還是無法解決的話，請附上使用版本、Unity 版本、重現步驟與 Console 錯誤，從 BOOTH 商品頁聯絡。',
+    },
+    credits: {
+      id: 'credits', nav: '素材出處與授權', title: '素材出處與授權',
+      lead: '外部素材的出處如下；各素材的授權與 Halo Loom 本體的使用條款分開處理。',
+      soundTitle: '音效',
+      sound: 'Take（拿取）與 Return（收回）為黒猫Dev 原創合成音效；其他音效取自下列 Pixabay 素材，經剪輯、淡入淡出、濾波與音量調整後使用（<a href="' + pixabay + '" target="_blank" rel="noopener">Pixabay Content License</a>）。請勿將音效單獨再散布或販售。',
+      soundCols: ['用途', '素材', '作者', 'Pixabay ID'],
+      visualTitle: '視覺素材',
+      visual: '<strong>Particle Pack (1.1)</strong> — Kenney（<a href="https://kenney.nl/" target="_blank" rel="noopener">kenney.nl</a>），<a href="' + cc0 + '" target="_blank" rel="noopener">CC0 1.0</a>。',
+      own: '萬聖節與光輝層的貼圖、選單圖示、愛心等為 Halo Loom 製作的素材（部分星芒包含 AI 生成貼圖）。CC0 標示僅針對列出的外部素材，Halo Loom 整體並非 CC0。',
+      avatar: '圖片與影片中的 Avatar：プラム Plum／あまとうさぎ（こまど）。不附 Avatar、場景與第三方付費素材。',
+    },
+    footer: '圖片與影片皆為 Unity 實際畫面。不附 Avatar、拍攝場景與第三方付費素材。',
+    updatedLabel: '更新',
+  },
+};
+
+export const newCards = cards;
